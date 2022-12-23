@@ -19,6 +19,7 @@ const App = () => {
    }
 
    const handleCreate = (addGift) => {
+    console.log(addGift)
     axios
       .post('http://localhost:8000/api/gifts', addGift)
       .then((response) => {
@@ -36,7 +37,7 @@ const App = () => {
   }
 
   const handleUpdate = (editGift) => {
-    console.log(editPerson)
+    console.log(editGift)
     axios
       .put('http://localhost:8000/api/gifts/' + editGift.id, editGift)
       .then((response) => {
@@ -62,11 +63,11 @@ const App = () => {
               <h4>{gift.gift_name}</h4>
               <h5>Price: {gift.gift_price}</h5>
               <a href={gift.link}>Link to Purchase</a>
-              <div className='tags'>
+              {/* <div className='tags'>
                 {gift.tags.map((tag)=> {
                   <p>{tag}</p>
                 })}
-              </div>
+              </div> */}
               {(gift.been_purchase) ? <p>Purchased</p> : <p>Not Purchased</p>}
               <button onClick={handleDelete} value={gift.id}> X </button>
               <Edit handleUpdate={handleUpdate} gift={gift} />

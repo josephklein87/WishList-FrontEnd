@@ -9,7 +9,7 @@ const Edit = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleUpdate(character)
+        props.handleUpdate(gift)
     }
 
     return(
@@ -73,6 +73,7 @@ const Edit = (props) => {
                         onChange={handleChange}
                     />
                     <br />
+                    <input type="submit"/>
                 </form>
             </details>
         </>

@@ -37,10 +37,15 @@ const Add = (props) => {
         <input type="text" name="tags" value={wishList.tags} onChange={handleChange}/>
         <br />
         <br />
+        <label htmlFor="link">Link to Purchase: </label>
+        <input type="text" name="link" value={wishList.link} onChange={handleChange}/>
+        <br />
+        <br />
         <label htmlFor="been_purchase">Purchased?: </label>
         <input type="checkbox" name="been_purchase" value={wishList.been_purchase} onChange={handleChange}/>
         <br />
         <br />
+        <input type="submit"/>
       </form>
     </>
   )
