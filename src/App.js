@@ -4,7 +4,6 @@ import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
 
-
 const App = () => {
 
   let [gifts, setGifts] = useState([])
@@ -70,6 +69,7 @@ const App = () => {
               </div>
               {(gift.been_purchase) ? <p>Purchased</p> : <p>Not Purchased</p>}
               <button onClick={handleDelete} value={gift.id}> X </button>
+              <Edit handleUpdate={handleUpdate} gift={gift} />
             </div>
           )
       })}
