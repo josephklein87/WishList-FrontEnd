@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
 import axios from 'axios'
-import Edit from './components/Edit'
 import Add from './components/Add'
+import Edit from './components/Edit'
+
 
 const App = () => {
 
