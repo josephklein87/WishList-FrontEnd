@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../App.css';
 
 //only need props as a param if we are passing in props to this component (we are going to here).
 const Add = (props) => {

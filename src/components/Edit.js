@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../App.css';
 
 const Edit = (props) => {
     const [gift, setGift] = useState({...props.gift})
