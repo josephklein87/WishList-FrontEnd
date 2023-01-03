@@ -57,7 +57,7 @@ const App = () => {
           {gifts.map((gift) => {
             return (
               <div className="gift" key={gift.id}>
-                <img src={gift.gift_picture} />
+                <img className="picture" src={gift.gift_picture} />
                 <h4>{gift.gift_name}</h4>
                 <h5>Price: {gift.gift_price}</h5>
                 <a href={gift.link}>Link to Purchase</a>
