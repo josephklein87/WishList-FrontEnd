@@ -87,6 +87,7 @@ const Nav = (props) => {
         <p onClick={toggleLoginModal} className="close-modal">X</p>
         <h1>Login to Account</h1>
         <label htmlFor="email">Email </label>
+        <br />
         <input type="text" name="email" onChange={handleChange}/>
         <br />
         <br />
@@ -107,6 +108,7 @@ const Nav = (props) => {
         <p onClick={toggleCreateAccountModal} className="close-modal">X</p>
         <h1>Create Account</h1>
         <label htmlFor="email">Email </label>
+        <br />
         <input type="text" name="email" onChange={handleChange}/>
         <br />
         <br />
