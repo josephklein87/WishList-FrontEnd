@@ -7,7 +7,12 @@ const Add = (props) => {
   const [wishList, setWishList] = useState(emptyWishList)
 
   const handleChange = (event) => {
+    console.log(wishList)
+    if (event.target.name !== "on_sale" && event.target.name !== "been_purchase") {
     setWishList({ ...wishList, [event.target.name]: event.target.value })
+    } else {
+      setWishList({ ...wishList, [event.target.name]: event.target.checked })
+    }
   }
   
   const handleSubmit = (event) => {
@@ -33,7 +38,7 @@ const Add = (props) => {
         <br />
         <br />
         <label htmlFor="on_sale">Is it on sale?: </label>
-        <input type="checkbox" name="on_sale" value={wishList.on_sale} onChange={handleChange}/>
+        <input type="checkbox" name="on_sale"  onChange={handleChange}/>
         <br />
         <br />
         <label htmlFor="tags">Tags/Categories: </label>
@@ -45,7 +50,7 @@ const Add = (props) => {
         <br />
         <br />
         <label htmlFor="been_purchase">Purchased?: </label>
-        <input type="checkbox" name="been_purchase" value={wishList.been_purchase} onChange={handleChange}/>
+        <input type="checkbox" name="been_purchase"  onChange={handleChange}/>
         <br />
         <br />
         <input type="submit"/>

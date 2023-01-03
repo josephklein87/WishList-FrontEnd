@@ -5,7 +5,13 @@ const Edit = (props) => {
     const [gift, setGift] = useState({...props.gift})
 
     const handleChange = (event) => {
-        setGift({ ...gift, [event.target.name]: event.target.value })
+
+        if (event.target.name !== "on_sale" && event.target.name !== "been_purchase") {
+            setGift({ ...gift, [event.target.name]: event.target.value })
+            } else {
+              setGift({ ...gift, [event.target.name]: event.target.checked })
+            }
+    
     }
 
     const handleSubmit = (event) => {
