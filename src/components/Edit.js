@@ -19,7 +19,9 @@ const Edit = (props) => {
                 <summary>Edit Gift</summary>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor='gift_name'>Gift: </label>
-                    <input  
+                    <br />
+                    <input 
+                        className='gift-name' 
                         type="text"
                         name="gift_name"
                         value={gift.gift_name}
@@ -27,7 +29,9 @@ const Edit = (props) => {
                     />
                     <br />
                     <label htmlFor="gift_picture">Picture: </label>
-                    <input  
+                    <br />
+                    <input 
+                        className='url'  
                         type="text"
                         name="gift_picture"
                         value={gift.gift_picture}
@@ -35,7 +39,9 @@ const Edit = (props) => {
                     />
                     <br />
                     <label htmlFor='gift_price'>Price: </label>
+                    <br />
                     <input  
+                        className='gift-price' 
                         type="number"
                         name="gift_price"
                         value={gift.gift_price}
@@ -43,6 +49,7 @@ const Edit = (props) => {
                     />
                     <br />
                     <label htmlFor='on_sale'>On Sale? </label>
+                    <br />
                     <input  
                         type="checkbox"
                         name="on_sale"
@@ -51,7 +58,9 @@ const Edit = (props) => {
                     />
                     <br />
                     <label htmlFor='link'>Link: </label>
+                    <br />
                     <input  
+                        className='link' 
                         type="text"
                         name="link"
                         value={gift.link}
@@ -59,7 +68,9 @@ const Edit = (props) => {
                     />
                     <br />
                     <label htmlFor='tags'>Tags: </label>
+                    <br />
                     <input  
+                        className='tags' 
                         type="text"
                         name="tags"
                         value={gift.tags}
@@ -74,7 +85,7 @@ const Edit = (props) => {
                         onChange={handleChange}
                     />
                     <br />
-                    <input type="submit"/>
+                    <input className='add' type="submit"/>
                 </form>
             </details>
         </>
