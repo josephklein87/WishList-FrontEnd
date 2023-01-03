@@ -10,12 +10,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import Add from './components/Add'
 import Edit from './components/Edit'
 import Nav from './components/Nav';
+import UserSearch from './components/UserSearch';
 
 
 
 const App = () => {
   let [gifts, setGifts] = useState([]);
   let [user, setUser] = useState({});
+  let [searchResults, setSearchResults] = useState({})
+  let [searchParams, setSearchParams] =useState({})
 
   const getGifts = () => {
     axios
@@ -52,6 +55,21 @@ const App = () => {
       });
   };
 
+  const handleSearchResults = (e) => {
+    setSearchParams(e.target.value)
+  }
+
+  const searchFriend = (e) => {
+    e.preventDefault()
+    console.log(searchParams)
+    axios.get(`http://localhost:8000/api/useraccount`)
+    .then( (res) => {
+      console.log(res.data)
+      setSearchResults(res.data)
+    }
+    )
+  }
+
   useEffect(() => {
     getGifts();
   }, []);
@@ -59,7 +77,7 @@ const App = () => {
   return (
     <>
         <Nav user={user} setUser={setUser} />
-          <div className="ribbon-1 left">Wshlst</div>
+          {/* <div className="ribbon-1 left">Wshlst</div> */}
         <Add handleCreate={handleCreate} />
         <div className="gifts">
           {gifts.map((gift) => {

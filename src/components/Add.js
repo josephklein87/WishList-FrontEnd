@@ -19,16 +19,15 @@ const Add = (props) => {
     <>
     <div className='container'>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="gift_picture">Image URL: </label>
+        <label htmlFor="gift_picture">Image URL: </label><br />
         <input type="text" name="gift_picture" value={wishList.gift_picture} onChange={handleChange}/>
         <br />
         <br />
-        <label htmlFor="gift_name">Gift name: </label>
+        <label htmlFor="gift_name">Gift name: </label><br />
         <input type="text" name="gift_name" value={wishList.gift_name} onChange={handleChange}/>
         <br />
         <br />
-        <label htmlFor="gift_price">Price: </label>
-        <br/>
+        <label htmlFor="gift_price">Price: </label><br />
         <input type="number" name="gift_price" value={wishList.gift_price} onChange={handleChange}/>
         <br />
         <br />
@@ -36,11 +35,11 @@ const Add = (props) => {
         <input type="checkbox" name="on_sale" value={wishList.on_sale} onChange={handleChange}/>
         <br />
         <br />
-        <label htmlFor="tags">Tags/Categories: </label>
+        <label htmlFor="tags">Tags/Categories: </label><br />
         <input type="text" name="tags" value={wishList.tags} onChange={handleChange}/>
         <br />
         <br />
-        <label htmlFor="link">Link to Purchase: </label>
+        <label htmlFor="link">Link to Purchase: </label><br />
         <input type="text" name="link" value={wishList.link} onChange={handleChange}/>
         <br />
         <br />
