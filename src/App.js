@@ -76,7 +76,7 @@ const App = () => {
               </div> */}<div className="box">
           <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
           </div>
-                <button className="btn" onClick={handleDelete} value={gift.id}>
+                <button className="delete" onClick={handleDelete} value={gift.id}>
                   {" "}
                   X{" "}
                 </button>
