@@ -17,6 +17,7 @@ const Add = (props) => {
   
   return (
     <>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
         <label htmlFor="gift_picture">Image URL: </label>
         <input type="text" name="gift_picture" value={wishList.gift_picture} onChange={handleChange}/>
@@ -27,6 +28,7 @@ const Add = (props) => {
         <br />
         <br />
         <label htmlFor="gift_price">Price: </label>
+        <br/>
         <input type="number" name="gift_price" value={wishList.gift_price} onChange={handleChange}/>
         <br />
         <br />
@@ -48,6 +50,7 @@ const Add = (props) => {
         <br />
         <input type="submit"/>
       </form>
+      </div>
     </>
   )
 }
