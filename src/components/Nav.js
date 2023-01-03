@@ -3,10 +3,11 @@ import '../App.css';
 import axios from 'axios';
 
 const Nav = (props) => {
-    let [loginModal, setLoginModal] = useState(false)
-    let [createAccountModal, setCreateAccountModal] = useState(false)
     let [createUser, setCreateUser] = useState({})
     let [error, setError] = useState('')
+
+    let loginModal = document.getElementById('loginModal')
+
 
     const handleUserCreate = (e) => {
         e.preventDefault();
@@ -18,8 +19,9 @@ const Nav = (props) => {
           'http://localhost:8000/api/useraccount',
           userObj
         ).then((res)=>{
+          props.setUser(res.data)
           setCreateUser('')
-        //   setAccountCreated(true)
+          document.getElementById('signupClose').click()
         })
       }
 
@@ -41,23 +43,14 @@ const Nav = (props) => {
             } else {
                 props.setUser(res.data)
                 setCreateUser("")
-                toggleLoginModal()
+                document.getElementById('loginClose').click()
             }
           //   setAccountCreated(true)
           })
       }
 
-
       const handleChange = (event) => {
         setCreateUser({ ...createUser, [event.target.name]: event.target.value })
-      }
-
-      const toggleCreateAccountModal = () => {
-        setCreateAccountModal(!createAccountModal)
-      }
-
-      const toggleLoginModal = () => {
-        setLoginModal(!loginModal)
       }
 
       const handleLogOut = () => {
@@ -66,62 +59,88 @@ const Nav = (props) => {
 
     return(
     <>
-    <div className='navbar'>
-    <h1>WSHLST</h1>
-            {(props.user.email) ? 
-                <ul className='nav-ul'>
-                    <li className='nav-links'>logged in: {props.user.email}</li>
-                    <li className='logout-btn nav-links' onClick={handleLogOut}>LOGOUT</li>
-                </ul>
-                :
-            <ul className='nav-ul'>
-            <li className='nav-links' onClick={toggleLoginModal}>LOGIN</li>
-            <li className='nav-links'onClick={toggleCreateAccountModal}>CREATE ACCOUNT</li>
-            </ul>
-        }
-    </div>
-
-    {loginModal ? 
-    <div className='login-modal-outer'>
-    <form onSubmit={handleUserLogin} className='account-form'>
-        <p onClick={toggleLoginModal} className="close-modal">X</p>
-        <h1>Login to Account</h1>
-        <label htmlFor="email">Email </label>
-        <br />
-        <input type="text" name="email" onChange={handleChange}/>
-        <br />
-        <br />
-        <label htmlFor="password">Password </label>
-        <input type="password" name="password" onChange={handleChange}/>
-        <br />
-        <input type="submit"/>
-        <p>{error}</p>
-    </form>
-    </div>
-    :
-    null
-    }
-
-{createAccountModal ? 
-    <div className='login-modal-outer'>
-    <form onSubmit = {handleUserCreate} className='account-form'>
-        <p onClick={toggleCreateAccountModal} className="close-modal">X</p>
-        <h1>Create Account</h1>
-        <label htmlFor="email">Email </label>
-        <br />
-        <input type="text" name="email" onChange={handleChange}/>
-        <br />
-        <br />
-        <label htmlFor="password">Password </label>
-        <input type="password" name="password" onChange={handleChange}/>
-        <br />
-        <input type="submit"/>
-    </form>
-    </div>
-    :
-    null
-    }
-
+      <div className='navbar navbar-expand-lg'>
+        <div className='container-fluid'>
+          <h1>WSHLST</h1>
+                {(props.user.email) ? 
+                    <div className='dropdown'>
+                        <button className='btn dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          {props.user.email}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a className='dropdown-item' onClick={handleLogOut}>Log Out</a></li>
+                        </ul>
+                    </div>
+                    :
+                <div className='d-flex'>
+                  <button type="btn" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    LOGIN
+                  </button>
+                  <button type="btn" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    CREATE ACCOUNT
+                  </button>
+                </div>
+            }
+        </div>
+      </div>
+      {/* Login Modal */}
+      <div className='modal fade' id='loginModal' tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Login</h3>
+              <button type="button" id='loginClose' class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form onSubmit={handleUserLogin} className='account-form'>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="email">Email </label>
+                  <input className='form-control' type="text" name="email" onChange={handleChange}/>
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="password">Password </label>
+                  <input className='form-control' type="password" name="password" onChange={handleChange}/>
+                  <div id="passwordHelpBlock" class="form-text">
+                    {error}
+                  </div>
+                </div>
+                <div className='d-flex justify-content-end'>
+                  <button className='btn' type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Signup Modal */}
+      <div className='modal fade' id='signupModal' tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Create an Account</h3>
+              <button type="button" id='signupClose' class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form onSubmit={handleUserCreate} className='account-form'>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="email">Email </label>
+                  <input className='form-control' type="text" name="email" onChange={handleChange}/>
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="password">Password </label>
+                  <input className='form-control' type="password" name="password" onChange={handleChange}/>
+                  <div id="passwordHelpBlock" class="form-text">
+                    {error}
+                  </div>
+                </div>
+                <div className='d-flex justify-content-end'>
+                  <button className='btn' type="submit">Create</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </>
     )
