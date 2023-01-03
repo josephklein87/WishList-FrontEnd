@@ -3,10 +3,12 @@ import './App.css';
 import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
+import Nav from './components/Nav';
 
 const App = () => {
 
   let [gifts, setGifts] = useState([])
+  let [user, setUser] = useState({})
 
   const getGifts = () => {
     axios
@@ -53,7 +55,7 @@ const App = () => {
 
   return (
     <>
-      <h1>WISHLIST</h1>
+      <Nav user={user} setUser={setUser}/>
       <Add handleCreate = {handleCreate} />
       <div className="gifts">
         {gifts.map((gift) => {
