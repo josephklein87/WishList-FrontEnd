@@ -72,6 +72,7 @@ const App = () => {
                   {" "}
                   X{" "}
                 </button>
+                <br/>
                 <Edit handleUpdate={handleUpdate} gift={gift} />
               </div>
             );
