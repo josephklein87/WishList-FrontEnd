@@ -18,7 +18,7 @@ const Add = (props) => {
   return (
     <>
     <div className='container'>
-      <form onSubmit={handleSubmit}>
+      <form className='add-form' onSubmit={handleSubmit}>
         <label htmlFor="gift_picture">Image URL: </label>
         <br/>
         <input className='url' type="text" name="gift_picture" value={wishList.gift_picture} onChange={handleChange}/>
