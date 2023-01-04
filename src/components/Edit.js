@@ -5,7 +5,11 @@ const Edit = (props) => {
     const [gift, setGift] = useState({...props.gift})
 
     const handleChange = (event) => {
+        if (event.target.type !== "checkbox") {
         setGift({ ...gift, [event.target.name]: event.target.value })
+        }else {
+        setGift({ ...gift, [event.target.name]: event.target.checked })   
+        }
     }
 
     const handleSubmit = (event) => {
@@ -15,6 +19,7 @@ const Edit = (props) => {
 
     return(
         <>
+            {props.user.username == props.gift.posted_by ?
             <details>
                 <summary>Edit Gift</summary>
                 <form onSubmit={handleSubmit}>
@@ -88,6 +93,9 @@ const Edit = (props) => {
                     <input className='add' type="submit"/>
                 </form>
             </details>
+            :
+            null
+        }
         </>
     )
 

@@ -7,7 +7,11 @@ const Add = (props) => {
   const [wishList, setWishList] = useState(emptyWishList)
 
   const handleChange = (event) => {
+    if (event.target.type !== "checkbox") {
     setWishList({ ...wishList, [event.target.name]: event.target.value })
+    } else {
+    setWishList({ ...wishList, [event.target.name]: event.target.checked })  
+    }
   }
   
   const handleSubmit = (event) => {
@@ -18,6 +22,7 @@ const Add = (props) => {
   return (
     <>
     <div className='container'>
+      {props.user.email ?
       <form className='add-form' onSubmit={handleSubmit}>
         <label htmlFor="gift_picture">Image URL: </label>
         <br/>
@@ -56,7 +61,11 @@ const Add = (props) => {
         <br />
         <input className='add-gift' type="submit"/>
       </form>
+      :
+      <h1>Login To Add To Your Wishlist</h1>
+      }
       </div>
+      
     </>
   )
 }
