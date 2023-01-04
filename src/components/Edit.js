@@ -31,7 +31,7 @@ const Edit = (props) => {
 
     return (
         <>
-            {props.user.username == props.gift.posted_by ?
+            {props.user.username === props.gift.posted_by ?
              <>
              <Button variant="primary" onClick={handleShow}>
                Edit Gift

@@ -171,11 +171,12 @@ textarea {
 
 
 .gifts {
-  padding: 45px;
+  padding: 4px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 25px;
+  justify-items: center;
 }
 .delete{
   background-color: #6CB4EE;
@@ -240,8 +241,13 @@ textarea {
   background: #CC0000;
   box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
 }
+.ribb{
+  padding-top: 10px;
+}
+
 .box p{
   color: white;
+  
 }
 .login-modal-outer{
   position: relative;
@@ -262,9 +268,15 @@ label{
   font-weight: bold;
   font-size: 20px;
 }
-@media (max-width: 760px) {
+@media (max-width: 1080px) {
   .gifts {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .gifts {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

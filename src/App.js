@@ -94,7 +94,7 @@ const App = () => {
                         onChange={()=> {purchaseChange(gift)}}
                     />
                 <div className="box">
-          <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
+          <div className="ribbon-2">{gift.been_purchase ? <p className='ribb'>Purchased</p> : <p className='ribb'>Not Purchased</p>}</div>
           </div>
           {user.username === gift.posted_by ?
                 <button className="delete" onClick={handleDelete} value={gift.id}>
