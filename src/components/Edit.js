@@ -31,7 +31,7 @@ const Edit = (props) => {
 
     return (
         <>
-            {props.user.username === props.gift.posted_by ?
+            {props.user.username == props.gift.posted_by ?
              <>
              <Button variant="primary" onClick={handleShow}>
                Edit Gift
@@ -101,14 +101,6 @@ const Edit = (props) => {
                      value={gift.tags}
                      onChange={handleChange}
                    />
-                   {/* <br />
-                   <label htmlFor="been_purchase">Purchased? </label>
-                   <input
-                     type="checkbox"
-                     name="been_purchase"
-                     value={gift.been_purchase}
-                     onChange={handleChange}
-                   /> */}
                    <br />
                    <br />
                    <Button variant="primary" type="submit">
@@ -117,9 +109,6 @@ const Edit = (props) => {
                  </form>
                </Modal.Body>
                <Modal.Footer>
-                 {/* <Button variant="secondary" onClick={handleClose}>
-                   Cancel
-                 </Button> */}
                </Modal.Footer>
              </Modal>
            </>
