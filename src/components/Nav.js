@@ -13,7 +13,8 @@ const Nav = (props) => {
         e.preventDefault();
         let userObj = {
           email: createUser.email,
-          password: createUser.password
+          password: createUser.password,
+          username: createUser.username
         }
         axios.post(
           'http://localhost:8000/api/useraccount',
@@ -29,7 +30,8 @@ const Nav = (props) => {
         e.preventDefault();
         let userObj = {
           email: createUser.email,
-          password: createUser.password
+          password: createUser.password,
+          username: createUser.username
         }
         axios.put(
             'http://localhost:8000/api/useraccount/login',
@@ -125,6 +127,10 @@ const Nav = (props) => {
                 <div className='mb-3'>
                   <label className='form-label' htmlFor="email">Email </label>
                   <input className='form-control' type="text" name="email" onChange={handleChange}/>
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="username">Username </label>
+                  <input className='form-control' type="text" name="username" onChange={handleChange}/>
                 </div>
                 <div className='mb-3'>
                   <label className='form-label' htmlFor="password">Password </label>
