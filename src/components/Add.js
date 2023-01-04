@@ -30,11 +30,7 @@ const Add = (props) => {
 
   return (
     <>
-    {props.user.username ?
-    <Button onClick={toggleModal}>Add Gift</Button>
-    :
-    null
-    }
+    <Button className="btn btn-light add-gift-button" onClick={toggleModal}>+ Add Gift</Button>
     <Modal show={isOpen} onHide={toggleModal}>
       <Modal.Header closeButton>
         <Modal.Title>Add Gift</Modal.Title>

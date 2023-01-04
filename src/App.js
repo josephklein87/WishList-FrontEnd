@@ -7,7 +7,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 
 // Components
-import Add from './components/Add'
 import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
@@ -89,8 +88,6 @@ const App = () => {
   return (
     <>
         <Nav user={user} setUser={setUser} />
-          {/* <div className="ribbon-1 left">Wshlst</div> */}
-        <Add handleCreate={handleCreate} user={user} />
         <div className="gifts">
           {gifts.map((gift) => {
             return (
