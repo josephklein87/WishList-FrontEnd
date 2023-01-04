@@ -7,7 +7,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 
 // Components
-import Add from './components/Add'
 import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
@@ -20,6 +19,7 @@ const App = () => {
   let [user, setUser] = useState({});
   let [searchResults, setSearchResults] = useState({})
   let [searchParams, setSearchParams] =useState({})
+  let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
 
   const getGifts = () => {
     axios
@@ -68,6 +68,18 @@ const App = () => {
     });
   }
 
+  const handleRibbonClick = (beenPurchased, id) => {
+    setGifts(gifts.map(gift => {
+      if (gift.id === id) {
+        return {
+          ...gift,
+          been_purchase: !beenPurchased
+        };
+      }
+      return gift;
+    }));
+  };
+
 
   useEffect(() => {
     getGifts();
@@ -76,8 +88,6 @@ const App = () => {
   return (
     <>
         <Nav user={user} setUser={setUser} />
-          {/* <div className="ribbon-1 left">Wshlst</div> */}
-        <Add handleCreate={handleCreate} user={user} />
         <div className="gifts">
           {gifts.map((gift) => {
             return (
@@ -87,17 +97,12 @@ const App = () => {
                 <h5>Price: ${gift.gift_price}</h5>
                 <a href={gift.link}>Link to Purchase</a>
                 <br />
-                    <label htmlFor='been_purchase'>Purchased? </label>
-                    <input  
-                        type="checkbox"
-                        name="been_purchase"
-                        value={gift.been_purchase}
-                        onChange={()=> {purchaseChange(gift)}}
-                    />
                 <Tags gift={gift} />
-                <div className="box">
-          <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
-          </div>
+  
+               <div className={`ribbon-2 ${gift.been_purchase ? 'purchased' : 'not-purchased'}`} onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}>
+                  {gift.been_purchase ? <p className='ribb purchased'>Purchased</p> : <p className='ribb not-purchased'>Not Purchased</p>}
+               </div>
+
           {user.username === gift.posted_by ?
                 <button className="delete" onClick={handleDelete} value={gift.id}>
                   {" "}

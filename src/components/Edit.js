@@ -31,7 +31,7 @@ const Edit = (props) => {
 
     return (
         <>
-            {props.user.username == props.gift.posted_by ?
+            {props.user.username === props.gift.posted_by ?
              <>
              <Button variant="primary" onClick={handleShow}>
                Edit Gift
@@ -42,8 +42,19 @@ const Edit = (props) => {
                  <Modal.Title>Edit Gift</Modal.Title>
                </Modal.Header>
                <Modal.Body>
-                 <form onSubmit={handleSubmit}>
-                   <label htmlFor="gift_name">Gift: </label>
+                 <form className="edit-form" onSubmit={handleSubmit}>
+                 <label htmlFor="gift_picture">Image URL: </label>
+                   <br />
+                   <input
+                     className="url"
+                     type="text"
+                     name="gift_picture"
+                     value={gift.gift_picture}
+                     onChange={handleChange}
+                   />
+                   <br />
+                   <br />
+                   <label htmlFor="gift_name">Gift Name: </label>
                    <br />
                    <input
                      className="gift-name"
@@ -53,15 +64,6 @@ const Edit = (props) => {
                      onChange={handleChange}
                    />
                    <br />
-                   <label htmlFor="gift_picture">Picture: </label>
-                   <br />
-                   <input
-                     className="url"
-                     type="text"
-                     name="gift_picture"
-                     value={gift.gift_picture}
-                     onChange={handleChange}
-                   />
                    <br />
                    <label htmlFor="gift_price">Price: </label>
                    <br />
@@ -73,7 +75,8 @@ const Edit = (props) => {
                      onChange={handleChange}
                    />
                    <br />
-                   <label htmlFor="on_sale">On Sale? </label>
+                   <br />
+                   <label htmlFor="on_sale">Is It On Sale?: </label>
                    <br />
                    <input
                      type="checkbox"
@@ -82,17 +85,8 @@ const Edit = (props) => {
                      onChange={handleChange}
                    />
                    <br />
-                   <label htmlFor="link">Link: </label>
                    <br />
-                   <input
-                     className="link"
-                     type="text"
-                     name="link"
-                     value={gift.link}
-                     onChange={handleChange}
-                   />
-                   <br />
-                   <label htmlFor="tags">Tags: </label>
+                   <label htmlFor="tags">Tags/Categories: </label>
                    <br />
                    <input
                      className="tags"
@@ -103,13 +97,22 @@ const Edit = (props) => {
                    />
                    <br />
                    <br />
-                   <Button variant="primary" type="submit">
-                     Save Changes
-                   </Button>
+                   <label htmlFor="link">Link to Purchase: </label>
+                   <br />
+                   <input
+                     className="link"
+                     type="text"
+                     name="link"
+                     value={gift.link}
+                     onChange={handleChange}
+                   />
+                   <br />
+                   <br />
+                   <input className="add-gift" variant="primary" type="submit" value="Save Changes"/>
                  </form>
                </Modal.Body>
-               <Modal.Footer>
-               </Modal.Footer>
+               {/* <Modal.Footer>
+               </Modal.Footer> */}
              </Modal>
            </>
             :

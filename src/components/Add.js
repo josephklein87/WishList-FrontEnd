@@ -30,11 +30,7 @@ const Add = (props) => {
 
   return (
     <>
-    {props.user.username ?
-    <Button onClick={toggleModal}>Add Gift</Button>
-    :
-    <h2 className="login-message">LOGIN TO ADD TO YOUR WISHLIST</h2>
-    }
+    <Button className="btn btn-light add-gift-button" onClick={toggleModal}>+ Add Gift</Button>
     <Modal show={isOpen} onHide={toggleModal}>
       <Modal.Header closeButton>
         <Modal.Title>Add Gift</Modal.Title>
@@ -52,7 +48,7 @@ const Add = (props) => {
           />
           <br />
           <br />
-          <label htmlFor="gift_name">Gift name: </label>
+          <label htmlFor="gift_name">Gift Name: </label>
           <br />
           <input
             className="gift-name"
@@ -74,7 +70,7 @@ const Add = (props) => {
           />
           <br />
           <br />
-          <label htmlFor="on_sale">Is it on sale?: </label>
+          <label htmlFor="on_sale">Is It On Sale?: </label>
           <br />
           <input
             type="checkbox"
