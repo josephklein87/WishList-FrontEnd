@@ -4,23 +4,17 @@ import "../App.css";
 
 //only need props as a param if we are passing in props to this component (we are going to here).
 const Add = (props) => {
-  let emptyWishList = {
-    gift_picture: "",
-    gift_name: "",
-    gift_price: "",
-    on_sale: false,
-    link: "",
-    tags: "",
-    been_purchase: false,
-  };
-  const [wishList, setWishList] = useState(emptyWishList);
+
+  let emptyWishList = { gift_picture: '', gift_name: '', gift_price: '', on_sale: false, link: '', tags: '', been_purchase: false, posted_by: ''}
+  const [wishList, setWishList] = useState(emptyWishList)
   const [isOpen, setIsOpen] = useState(false);
+
 
   const handleChange = (event) => {
     if (event.target.type !== "checkbox") {
-    setWishList({ ...wishList, [event.target.name]: event.target.value })
+    setWishList({ ...wishList, [event.target.name]: event.target.value, posted_by: props.user.username })
     } else {
-    setWishList({ ...wishList, [event.target.name]: event.target.checked })  
+    setWishList({ ...wishList, [event.target.name]: event.target.checked, posted_by: props.user.username })  
     }
   }
   

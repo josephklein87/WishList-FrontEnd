@@ -32,6 +32,7 @@ const App = () => {
 
   const handleCreate = (addGift) => {
     console.log(addGift);
+    console.log(user)
     axios.post("http://localhost:8000/api/gifts", addGift).then((response) => {
       console.log(response);
       getGifts();
