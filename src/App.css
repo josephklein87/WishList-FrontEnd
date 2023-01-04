@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+#root {
+  background-color: #d1d5de;
+  font-family: 'Roboto', sans-serif;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: black;
+  background-color: #252525;
   height: 70px;
 }
 
 .dropdown-toggle {
-  color: white !important;
+  color: #d1d5de !important;
 }
 
 ul {
@@ -67,15 +75,22 @@ p {
   cursor: pointer;
 }
 
+#navTitle {
+  color: #ff1f26;
+  font-family: 'Lato', sans-serif;
+}
+
 .add-form{
   max-width: 600px;
   max-height: 200vh;
   margin: 20px auto;
-  background-image: linear-gradient(#7CB9E8, #7CB9E8 );
+  /* background-image: linear-gradient(#7CB9E8, #7CB9E8 ); */
+background-color: #4062bb;
+/* background-color: #804488; */
   border-radius: 50px;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  box-shadow: 0 0 20px 5px goldenrod;
+  box-shadow: 0 0 20px 5px #b7b6c2;
   transition: all 0.3s ease;
   padding-top: 10px;
   color: white;
@@ -93,7 +108,7 @@ p {
 .tags,
 .link,
 textarea {
-  background-color: #ffffff;
+  background-color: #d1d5de;
   border: none;
   border-radius: 20px;
   box-shadow: 0 0 10px 2px grey;
@@ -104,7 +119,7 @@ textarea {
 }
 
 .add{
-  background-color: #ffffff;
+  background-color: #d1d5de;
   border: none;
   border-radius: 10px;
   color: #9faab8;
@@ -115,7 +130,7 @@ textarea {
   margin-bottom: 10px;
 }
 .add-gift{
-  background-color: #ffffff;
+  background-color: #d1d5de;
   border: none;
   border-radius: 10px;
   color: #9faab8;
@@ -126,21 +141,24 @@ textarea {
   margin-bottom: 10px;
 }
 
-.add:hover {
-  background-color: goldenrod;
-  color: #ffffff;
+
+.add :hover {
+  background-color: #3454d5;
+  color: #d1d5de;
 }
+
 .add-gift:hover {
-  background-color: goldenrod;
-  color: #ffffff;
+  background-color: #3454d5;
+  color: #d1d5de;
 }
+
 .gift{
   max-width: 500px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 10px;
   padding: 20px;
-  background-image: linear-gradient(#6CB4EE, #f4f4f4);
+  background-image: linear-gradient(#4062bb, #6CB4EE);
   text-align: center;
   position: relative;
   margin-bottom: 30px;
@@ -175,7 +193,7 @@ textarea {
 }
 .delete:hover{
   background-color: #CC0000;
-  color: #ffffff;
+  color: #d1d5de;
 }
 .ribbon {
   position: fixed;

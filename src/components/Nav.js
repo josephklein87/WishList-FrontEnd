@@ -63,7 +63,7 @@ const Nav = (props) => {
     <>
       <div className='navbar navbar-expand-lg'>
         <div className='container-fluid'>
-          <h1>WSHLST</h1>
+          <h1 id='navTitle'>WSHLST</h1>
                 {(props.user.email) ? 
                     <div className='dropdown'>
                         <button className='btn dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
