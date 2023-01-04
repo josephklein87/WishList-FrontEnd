@@ -42,7 +42,7 @@ const Edit = (props) => {
                  <Modal.Title>Edit Gift</Modal.Title>
                </Modal.Header>
                <Modal.Body>
-                 <form onSubmit={handleSubmit}>
+                 <form className="edit-form" onSubmit={handleSubmit}>
                    <label htmlFor="gift_name">Gift: </label>
                    <br />
                    <input
@@ -108,8 +108,8 @@ const Edit = (props) => {
                    </Button>
                  </form>
                </Modal.Body>
-               <Modal.Footer>
-               </Modal.Footer>
+               {/* <Modal.Footer>
+               </Modal.Footer> */}
              </Modal>
            </>
             :
