@@ -48,7 +48,7 @@ const Add = (props) => {
           />
           <br />
           <br />
-          <label htmlFor="gift_name">Gift name: </label>
+          <label htmlFor="gift_name">Gift Name: </label>
           <br />
           <input
             className="gift-name"
@@ -70,7 +70,7 @@ const Add = (props) => {
           />
           <br />
           <br />
-          <label htmlFor="on_sale">Is it on sale?: </label>
+          <label htmlFor="on_sale">Is It On Sale?: </label>
           <br />
           <input
             type="checkbox"
