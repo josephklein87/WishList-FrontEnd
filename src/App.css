@@ -230,43 +230,7 @@ textarea {
   color: #d1d5de;
 }
 
-.ribbon {
-  position: fixed;
-  inset: 0 auto auto 0;
-  background: red;
-  background: red;
-  transform-origin: 100% 0;
-  /* or top left */
-  transform: translate(-29.3%) rotate(-45deg);
 
-}
-
-.ribbon-1 {
-  position: fixed;
-  inset: 0 auto auto 0;
-  background: red;
-  transform-origin: 100% 0;
-  transform: translate(-29.3%) rotate(-45deg);
-  box-shadow: 0 0 0 999px red;
-  clip-path: inset(0 -100%);
-  color: white;
-}
-
-.left {
-  inset: 0 auto auto 0;
-  /* top and left equal to 0 */
-  transform-origin: 100% 0;
-  /* OR top right */
-  transform: translate(-29.3%) rotate(-45deg);
-}
-
-.right {
-  inset: 0 0 auto auto;
-  /* top and right equal to 0 */
-  transform-origin: 0 0;
-  /* OR top left */
-  transform: translate(29.3%) rotate(45deg);
-}
 
 .ribbon-2 {
   --f: 10px;
@@ -287,6 +251,7 @@ textarea {
   box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
   cursor: pointer;
 }
+
 .ribb{
   padding-top: 10px;
 
@@ -391,4 +356,5 @@ label {
   color: black;
   
 }
+
 
