@@ -240,9 +240,11 @@ textarea {
       var(--r) calc(50% - var(--f)/2));
   background: #CC0000;
   box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+  cursor: pointer;
 }
 .ribb{
   padding-top: 10px;
+
 }
 
 .box p{
@@ -278,6 +280,26 @@ label{
   .gifts {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+.ribbon-2.purchased {
+  /* style when purchased */
+  background-color: #CC0000;
+}
+
+.ribbon-2.not-purchased {
+  /* style when not purchased */
+  background-color: grey;
+
+}
+.ribb.purchased {
+  /* style when purchased */
+  color: white;
+}
+
+.ribb.not-purchased {
+  /* style when not purchased */
+  color: black;
+  
 }
 
 

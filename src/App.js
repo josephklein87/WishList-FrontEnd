@@ -19,6 +19,7 @@ const App = () => {
   let [user, setUser] = useState({});
   let [searchResults, setSearchResults] = useState({})
   let [searchParams, setSearchParams] =useState({})
+  let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
 
   const getGifts = () => {
     axios
@@ -67,6 +68,18 @@ const App = () => {
     });
   }
 
+  const handleRibbonClick = (beenPurchased, id) => {
+    setGifts(gifts.map(gift => {
+      if (gift.id === id) {
+        return {
+          ...gift,
+          been_purchase: !beenPurchased
+        };
+      }
+      return gift;
+    }));
+  };
+
 
   useEffect(() => {
     getGifts();
@@ -86,16 +99,16 @@ const App = () => {
                 <h5>Price: ${gift.gift_price}</h5>
                 <a href={gift.link}>Link to Purchase</a>
                 <br />
-                    <label htmlFor='been_purchase'>Purchased? </label>
+                    {/* <label htmlFor='been_purchase'>Purchased? </label>
                     <input  
                         type="checkbox"
                         name="been_purchase"
                         value={gift.been_purchase}
                         onChange={()=> {purchaseChange(gift)}}
-                    />
-                <div className="box">
-          <div className="ribbon-2">{gift.been_purchase ? <p className='ribb'>Purchased</p> : <p className='ribb'>Not Purchased</p>}</div>
-          </div>
+                    /> */}
+               <div className={`ribbon-2 ${gift.been_purchase ? 'purchased' : 'not-purchased'}`} onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}>
+        {gift.been_purchase ? <p className='ribb purchased'>Purchased</p> : <p className='ribb not-purchased'>Not Purchased</p>}
+      </div>
           {user.username === gift.posted_by ?
                 <button className="delete" onClick={handleDelete} value={gift.id}>
                   {" "}
