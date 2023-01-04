@@ -11,6 +11,7 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
+import Tags from './components/Tags';
 
 
 
@@ -93,6 +94,7 @@ const App = () => {
                         value={gift.been_purchase}
                         onChange={()=> {purchaseChange(gift)}}
                     />
+                <Tags gift={gift} />
                 <div className="box">
           <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
           </div>

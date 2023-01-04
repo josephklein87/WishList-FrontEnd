@@ -262,6 +262,26 @@ label{
   font-weight: bold;
   font-size: 20px;
 }
+
+.tags-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tag-box {
+  margin: .3em;
+  background-color: rgb(85, 101, 192);
+  color: white;
+  padding: .3em;
+  border-radius: .5em;
+  text-transform: lowercase;
+}
+
+.login-message {
+  text-align: center;
+  font-family: Lato;
+}
+
 @media (max-width: 760px) {
   .gifts {
     grid-template-columns: 1fr;
