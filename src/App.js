@@ -98,6 +98,7 @@ const App = () => {
                 <a href={gift.link}>Link to Purchase</a>
                 <br />
                 <Tags gift={gift} />
+                <div class="ribbon">Rotated Ribbon</div>
   
                <div className={`ribbon-2 ${gift.been_purchase ? 'purchased' : 'not-purchased'}`} onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}>
                   {gift.been_purchase ? <p className='ribb purchased'>Purchased</p> : <p className='ribb not-purchased'>Not Purchased</p>}
