@@ -33,7 +33,7 @@ const Add = (props) => {
     {props.user.username ?
     <Button onClick={toggleModal}>Add Gift</Button>
     :
-    <h2 className="login-message">LOGIN TO ADD TO YOUR WISHLIST</h2>
+    null
     }
     <Modal show={isOpen} onHide={toggleModal}>
       <Modal.Header closeButton>
