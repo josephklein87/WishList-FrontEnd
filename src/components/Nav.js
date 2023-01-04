@@ -71,7 +71,7 @@ const Nav = (props) => {
             <h1 id='navTitle'>WSHLST</h1>
           </div>
                 {(props.user.email) ? 
-                  <div className='d-flex pe-3'>
+                  <div className='d-flex right-nav'>
                     <Add handleCreate={props.handleCreate} user={props.user} />
                     <div className='dropdown'>
                         <button className='btn btn-light dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,7 +83,7 @@ const Nav = (props) => {
                     </div>
                   </div>
                     :
-                <div className='d-flex pe-2 pt-1'>
+                <div className='d-flex right-nav'>
                   <button type="btn" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
                     LOGIN
                   </button>

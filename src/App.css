@@ -40,8 +40,17 @@ li {
 
 .nav-brand {
   display: flex;
+  flex: 1;
   justify-content: center;
   padding-left: 1em;
+  justify-content: flex-start;
+}
+
+.right-nav {
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-right: 1em;
 }
 
 .gift-icon {
@@ -56,6 +65,7 @@ li {
 }
 
 .add-gift-button {
+  margin-right: 1em;
   color: #666363 !important;
 }
 
@@ -272,6 +282,23 @@ label{
   font-size: 20px;
 }
 @media (max-width: 760px) {
+
+  .add-gift-button {
+    margin-right: .4em;
+  }
+
+  .nav-brand {
+    padding-left: .5em;
+  }
+
+  .right-nav {
+    padding-right: 0;
+  }
+
+  .navbar {
+    height: 100px;
+  }
+
   .gifts {
     grid-template-columns: 1fr;
   }

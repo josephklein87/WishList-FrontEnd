@@ -30,7 +30,7 @@ const Add = (props) => {
 
   return (
     <>
-    <Button className="btn btn-light me-4 add-gift-button" onClick={toggleModal}>+ Add Gift</Button>
+    <Button className="btn btn-light add-gift-button" onClick={toggleModal}>+ Add Gift</Button>
     <Modal show={isOpen} onHide={toggleModal}>
       <Modal.Header closeButton>
         <Modal.Title>Add Gift</Modal.Title>
