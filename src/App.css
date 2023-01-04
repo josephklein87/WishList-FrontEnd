@@ -92,7 +92,7 @@ input[type='checkbox'] {
   max-height: 200vh;
   margin: 20px auto;
   /* background-image: linear-gradient(#7CB9E8, #7CB9E8 ); */
-  background-color: #b7b6c2;
+  /* background-color: #b7b6c2; */
   /* background-color: #804488; */
   /* border-radius: 50px; */
   font-family: 'Roboto', sans-serif;
@@ -160,11 +160,11 @@ textarea {
   color: #d1d5de;
 }
 
-.modal-header,
+/* .modal-header,
 .modal-body,
 .modal-footer {
   background-color: #b7b6c2;
-}
+} */
 
 .gift {
   max-width: 500px;
