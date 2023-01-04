@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-#root {
+#root, html {
   background-color: #d1d5de;
   font-family: 'Roboto', sans-serif;
 }
@@ -148,8 +148,12 @@ textarea {
 }
 
 .add-gift:hover {
-  background-color: #3454d5;
+  background-color: #ff1f26;
   color: #d1d5de;
+}
+
+.modal-header, .modal-body {
+  background-color: #d1d5de;
 }
 
 .gift{
@@ -178,7 +182,7 @@ textarea {
   grid-gap: 25px;
 }
 .delete{
-  background-color: #6CB4EE;
+  background-color: #9faab8;
   border: none;
   border-radius: 10px;
   color: black;
