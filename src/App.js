@@ -55,6 +55,17 @@ const App = () => {
       });
   };
 
+  const purchaseChange = (gift) => {
+    let purchaseToggle = {...gift, been_purchase: !gift.been_purchase}
+    console.log(gift.been_purchase)
+    axios
+    .put("http://localhost:8000/api/gifts/" + gift.id, purchaseToggle
+    )
+    .then((response) => {
+      getGifts();
+    });
+  }
+
 
   useEffect(() => {
     getGifts();
@@ -73,6 +84,14 @@ const App = () => {
                 <h4>{gift.gift_name}</h4>
                 <h5>Price: ${gift.gift_price}</h5>
                 <a href={gift.link}>Link to Purchase</a>
+                <br />
+                    <label htmlFor='been_purchase'>Purchased? </label>
+                    <input  
+                        type="checkbox"
+                        name="been_purchase"
+                        value={gift.been_purchase}
+                        onChange={()=> {purchaseChange(gift)}}
+                    />
                 <div className="box">
           <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
           </div>
