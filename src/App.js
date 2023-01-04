@@ -55,20 +55,6 @@ const App = () => {
       });
   };
 
-  const handleSearchResults = (e) => {
-    setSearchParams(e.target.value)
-  }
-
-  const searchFriend = (e) => {
-    e.preventDefault()
-    console.log(searchParams)
-    axios.get(`http://localhost:8000/api/useraccount`)
-    .then( (res) => {
-      console.log(res.data)
-      setSearchResults(res.data)
-    }
-    )
-  }
 
   useEffect(() => {
     getGifts();
@@ -78,7 +64,7 @@ const App = () => {
     <>
         <Nav user={user} setUser={setUser} />
           {/* <div className="ribbon-1 left">Wshlst</div> */}
-        <Add handleCreate={handleCreate} />
+        <Add handleCreate={handleCreate} user={user} />
         <div className="gifts">
           {gifts.map((gift) => {
             return (
@@ -87,19 +73,19 @@ const App = () => {
                 <h4>{gift.gift_name}</h4>
                 <h5>Price: ${gift.gift_price}</h5>
                 <a href={gift.link}>Link to Purchase</a>
-                {/* <div className='tags'>
-                {gift.tags.map((tag)=> {
-                  <p>{tag}</p>
-                })}
-              </div> */}<div className="box">
+                <div className="box">
           <div className="ribbon-2">{gift.been_purchase ? <p>Purchased</p> : <p>Not Purchased</p>}</div>
           </div>
-                <button className="btn" onClick={handleDelete} value={gift.id}>
+          {user.username === gift.posted_by ?
+                <button className="delete" onClick={handleDelete} value={gift.id}>
                   {" "}
                   X{" "}
                 </button>
+          :
+          null
+          }
                 <br/>
-                <Edit handleUpdate={handleUpdate} gift={gift} />
+                <Edit handleUpdate={handleUpdate} gift={gift} user={user}/>
               </div>
             );
           })}
