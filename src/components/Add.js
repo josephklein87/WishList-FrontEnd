@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../App.css";
 
@@ -17,9 +17,13 @@ const Add = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (event) => {
-    setWishList({ ...wishList, [event.target.name]: event.target.value });
-  };
-
+    if (event.target.type !== "checkbox") {
+    setWishList({ ...wishList, [event.target.name]: event.target.value })
+    } else {
+    setWishList({ ...wishList, [event.target.name]: event.target.checked })  
+    }
+  }
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     props.handleCreate(wishList);
