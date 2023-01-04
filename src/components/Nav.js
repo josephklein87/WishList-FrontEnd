@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import '../App.css';
 import axios from 'axios';
+import { AiFillGift } from 'react-icons/ai'
+
+import Add from './Add';
 
 const Nav = (props) => {
     let [createUser, setCreateUser] = useState({})
@@ -61,20 +64,26 @@ const Nav = (props) => {
 
     return(
     <>
-      <div className='navbar navbar-expand-lg'>
+      <div className='navbar navbar-expand-lg fixed-top'>
         <div className='container-fluid'>
-          <h1 id='navTitle'>WSHLST</h1>
+          <div className='nav-brand'>
+            <AiFillGift className='gift-icon' size={'2em'}/>
+            <h1 id='navTitle'>WSHLST</h1>
+          </div>
                 {(props.user.email) ? 
+                  <div className='d-flex pe-3'>
+                    <Add handleCreate={props.handleCreate} user={props.user} />
                     <div className='dropdown'>
-                        <button className='btn dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          {props.user.email}
+                        <button className='btn btn-light dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          {props.user.username}
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                           <li><a className='dropdown-item' onClick={handleLogOut}>Log Out</a></li>
                         </ul>
                     </div>
+                  </div>
                     :
-                <div className='d-flex'>
+                <div className='d-flex pe-2 pt-1'>
                   <button type="btn" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
                     LOGIN
                   </button>

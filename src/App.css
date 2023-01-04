@@ -2,20 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 #root {
-  background-color: #d1d5de;
+  background-color: #ffffff;
   font-family: 'Roboto', sans-serif;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: #252525;
-  height: 70px;
-}
-
-.dropdown-toggle {
-  color: #d1d5de !important;
 }
 
 ul {
@@ -31,10 +19,56 @@ li {
   margin: 10px;
 }
 
+
+/* //////////// */
+/* ///NAVBAR/// */
+/* //////////// */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #ffffff;
+  height: 80px;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.182))
+}
+
 .navbar h1 {
-  color: white;
   margin: 0;
   margin-left: 10px;
+}
+
+.nav-brand {
+  display: flex;
+  justify-content: center;
+  padding-left: 1em;
+}
+
+.gift-icon {
+  color: #CC0000;
+}
+
+#navTitle {
+  color: #CC0000;
+  padding-top: .17em;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+}
+
+.add-gift-button {
+  color: #666363 !important;
+}
+
+.dropdown-toggle {
+  color: #666363 !important;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+.container-fluid {
+  max-height: 70px !important;
 }
 
 .modal {
@@ -42,30 +76,8 @@ li {
 }
 
 .nav-btn {
-  color: white !important;
+  color: #666363 !important;
 }
-
-/* .login-modal-outer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(105, 105, 105, 0.573);
-  z-index: 2;
-}
-
-.account-form {
-position: fixed;
-left: 0;
-right: 0;
-top: 30%;
-margin: 0 auto;
-background-color: white;
-padding: 20px;
-width: 500px;
-border-radius: 10px;
-} */
 
 p {
   color: black;
@@ -73,11 +85,6 @@ p {
 
 .nav-links, .close-modal, input[type='checkbox'] {
   cursor: pointer;
-}
-
-#navTitle {
-  color: #ff1f26;
-  font-family: 'Lato', sans-serif;
 }
 
 .add-form{
@@ -165,18 +172,20 @@ textarea {
 }
 
 
+
 .gift:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.371);
 }
 
 
 .gifts {
-  padding: 45px;
-  margin: auto;
+  padding: 60px;
+  margin-top: 4em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 25px;
 }
+
 .delete{
   background-color: #6CB4EE;
   border: none;
