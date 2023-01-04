@@ -105,7 +105,7 @@ const Add = (props) => {
               value={wishList.link}
               onChange={handleChange}
             />
-            <br />
+            {/* <br />
             <br />
             <label htmlFor="been_purchase">Purchased?: </label>
             <br />
@@ -114,7 +114,7 @@ const Add = (props) => {
               name="been_purchase"
               value={wishList.been_purchase}
               onChange={handleChange}
-            />
+            /> */}
             <br />
             <br />
             <input className="add-gift" type="submit" />
