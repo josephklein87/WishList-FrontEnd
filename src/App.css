@@ -208,7 +208,79 @@ textarea {
   grid-gap: 25px;
   justify-items: center;
 }
+.welcome-box{
+  display: grid;
+}
+.welcome-container {
+  /* margin-top: 15em;
+  margin-right: 2em; */
+  margin: 15em auto;
+  text-align: center;
+}
 
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bigTitle{
+  color: #CC0000;
+  font-size: 10vw;
+  padding: 0em;
+  margin: 0;
+  animation: fadeIn 1s ease-in both;
+}
+
+.smallTitle{
+  font-size: 4.5vw;
+  /* margin-right: .3em; */
+  padding-top: 0;
+  animation: fadeIn 1s ease-in both;
+  animation-delay: 1s;
+}
+
+.smallestTitle{
+  font-size: 3vw;
+  /* margin-right: .5em; */
+  animation: fadeIn 1s ease-in both;
+  animation-delay: 3s;
+}
+
+@media (max-width: 700px) {
+  .welcome-container{
+    text-align: center;
+    margin: 25em auto;
+  }
+  .bigTitle{
+    color: #CC0000;
+    font-size: 20vw;
+    padding: 0em;
+    margin: 0;
+    animation: fadeIn 1s ease-in both;
+  }
+  
+  .smallTitle{
+    font-size: 9vw;
+    /* margin-right: .3em; */
+    padding-top: 0;
+    animation: fadeIn 1s ease-in both;
+    animation-delay: 1s;
+  }
+  
+  .smallestTitle{
+    font-size: 6vw;
+    /* margin-right: .5em; */
+    animation: fadeIn 1s ease-in both;
+    animation-delay: 3s;
+  }
+
+}
 
 .delete{
   background-color: #6CB4EE;

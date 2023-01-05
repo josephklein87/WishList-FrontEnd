@@ -11,6 +11,7 @@ import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
 import Tags from './components/Tags';
+import Welcome from './components/Welcome'
 
 
 
@@ -18,7 +19,7 @@ const App = () => {
   let [gifts, setGifts] = useState([]);
   let [user, setUser] = useState({});
   let [searchResults, setSearchResults] = useState({})
-  let [searchParams, setSearchParams] =useState({})
+  let [searchParams, setSearchParams] = useState({})
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
 
   const getGifts = () => {
@@ -58,14 +59,14 @@ const App = () => {
   };
 
   const purchaseChange = (gift) => {
-    let purchaseToggle = {...gift, been_purchase: !gift.been_purchase}
+    let purchaseToggle = { ...gift, been_purchase: !gift.been_purchase }
     console.log(gift.been_purchase)
     axios
-    .put("http://localhost:8000/api/gifts/" + gift.id, purchaseToggle
-    )
-    .then((response) => {
-      getGifts();
-    });
+      .put("http://localhost:8000/api/gifts/" + gift.id, purchaseToggle
+      )
+      .then((response) => {
+        getGifts();
+      });
   }
 
   const handleRibbonClick = (beenPurchased, id) => {
@@ -85,9 +86,13 @@ const App = () => {
     getGifts();
   }, []);
 
+  
   return (
     <>
-        <Nav user={user} setUser={setUser} />
+      <Nav user={user} setUser={setUser} />
+      {user.username === undefined ? 
+        <Welcome />
+        :
         <div className="gifts">
           {gifts.map((gift) => {
             return (
@@ -98,25 +103,26 @@ const App = () => {
                 <a href={gift.link}>Link to Purchase</a>
                 <br />
                 <Tags gift={gift} />
-  
-               <div className={`ribbon-2 ${gift.been_purchase ? 'purchased' : 'not-purchased'}`} onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}>
-                  {gift.been_purchase ? <p className='ribb purchased'>Purchased</p> : <p className='ribb not-purchased'>Not Purchased</p>}
-               </div>
 
-          {user.username === gift.posted_by ?
-                <button className="delete" onClick={handleDelete} value={gift.id}>
-                  {" "}
-                  X{" "}
-                </button>
-          :
-          null
-          }
-                <br/>
-                <Edit handleUpdate={handleUpdate} gift={gift} user={user}/>
+                <div className={`ribbon-2 ${gift.been_purchase ? 'purchased' : 'not-purchased'}`} onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}>
+                  {gift.been_purchase ? <p className='ribb purchased'>Purchased</p> : <p className='ribb not-purchased'>Not Purchased</p>}
+                </div>
+
+                {user.username === gift.posted_by ?
+                  <button className="delete" onClick={handleDelete} value={gift.id}>
+                    {" "}
+                    X{" "}
+                  </button>
+                  :
+                  null
+                }
+                <br />
+                <Edit handleUpdate={handleUpdate} gift={gift} user={user} />
               </div>
             );
           })}
-      </div>
+        </div>
+      };
     </>
   );
 };
