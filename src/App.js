@@ -136,22 +136,17 @@ const App = () => {
                 )}
               </div>
               <div
-                className={` ${
-                  user.username === gift.posted_by
-                    ? gift.been_purchase
+                className={` ${ gift.been_purchase
                       ? "ribbon-2 purchased"
                       : "ribbon-2 not-purchased"
-                    : null
                 }`}
                 onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}
               >
-                {user.username === gift.posted_by ? (
-                  gift.been_purchase ? (
+                  {gift.been_purchase ? (
                     <p className="ribb purchased">Purchased</p>
                   ) : (
                     <p className="ribb not-purchased">Not Purchased</p>
-                  )
-                ) : null}
+                  )}
               </div>
 
               {user.username === gift.posted_by ? (
