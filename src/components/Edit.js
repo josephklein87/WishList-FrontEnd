@@ -33,9 +33,9 @@ const Edit = (props) => {
         <>
             {props.user.username === props.gift.posted_by ?
              <>
-             <Button variant="primary" onClick={handleShow}>
+             <button className="edit-btn" onClick={handleShow}>
                Edit Gift
-             </Button>
+             </button>
        
              <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton>
@@ -108,7 +108,7 @@ const Edit = (props) => {
                    />
                    <br />
                    <br />
-                   <input className="add-gift" variant="primary" type="submit" value="Save Changes"/>
+                   <input className="add-gift" type="submit" value="Save Changes"/>
                  </form>
                </Modal.Body>
                {/* <Modal.Footer>

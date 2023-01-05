@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 #root {
   background-color: #ffffff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 ul {
@@ -20,7 +19,6 @@ li {
   margin: 10px;
 }
 
-
 /* //////////// */
 /* ///NAVBAR/// */
 /* //////////// */
@@ -31,7 +29,7 @@ li {
   width: 100%;
   background-color: #ffffff;
   height: 80px;
-  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.182))
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.182));
 }
 
 .navbar h1 {
@@ -55,13 +53,13 @@ li {
 }
 
 .gift-icon {
-  color: #CC0000;
+  color: #cc0000;
 }
 
 #navTitle {
-  color: #CC0000;
-  padding-top: .17em;
-  font-family: 'Lato', sans-serif;
+  color: #cc0000;
+  padding-top: 0.17em;
+  font-family: "Lato", sans-serif;
   font-size: 1.5em;
 }
 
@@ -96,11 +94,12 @@ p {
 
 .nav-links,
 .close-modal,
-input[type='checkbox'] {
+input[type="checkbox"] {
   cursor: pointer;
 }
 
-.add-form, .edit-form {
+.add-form,
+.edit-form {
   max-width: 600px;
   max-height: 200vh;
   margin: 20px auto;
@@ -108,7 +107,7 @@ input[type='checkbox'] {
   /* background-color: #b7b6c2; */
   /* background-color: #804488; */
   /* border-radius: 50px; */
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   /* box-shadow: 0 0 20px 5px #b7b6c2; */
   transition: all 0.3s ease;
@@ -151,10 +150,10 @@ textarea {
 }
 
 .add-gift {
-  background-color: #d1d5de;
+  background-color: white;
   border: none;
   border-radius: 10px;
-  color: #9faab8;
+  color: rgb(102, 102, 102);
   cursor: pointer;
   font-size: 22px;
   padding: 10px 20px;
@@ -162,15 +161,14 @@ textarea {
   margin-bottom: 10px;
 }
 
-
 .add :hover {
   background-color: #3454d5;
   color: #d1d5de;
 }
 
 .add-gift:hover {
-  background-color: #ff1f26;
-  color: #d1d5de;
+  background-color: #d1d5de;
+  color: white;
 }
 
 /* .modal-header,
@@ -187,31 +185,27 @@ textarea {
   padding: 20px;
   /* background-color: white; */
   background-image: linear-gradient(white, rgb(236, 235, 235));
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   margin-bottom: 30px;
-
 }
-
-
 
 .gift:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.371);
 }
-
 
 .gifts {
   padding-top: 60px;
   margin-top: 4em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 25px;
   justify-items: center;
 }
 
-
-.delete{
-  background-color: #6CB4EE;
+.delete {
+  background-color: white;
   border: none;
   border-radius: 10px;
   color: black;
@@ -226,11 +220,9 @@ textarea {
 }
 
 .delete:hover {
-  background-color: #CC0000;
+  background-color: #cc0000;
   color: #d1d5de;
 }
-
-
 
 .ribbon-2 {
   --f: 10px;
@@ -241,26 +233,28 @@ textarea {
   /* the top offset */
 
   position: absolute;
-  inset: var(--t) calc(-1*var(--f)) auto auto;
+  inset: var(--t) calc(-1 * var(--f)) auto auto;
   padding: 0 10px var(--f) calc(10px + var(--r));
-  clip-path:
-    polygon(0 0, 100% 0, 100% calc(100% - var(--f)), calc(100% - var(--f)) 100%,
-      calc(100% - var(--f)) calc(100% - var(--f)), 0 calc(100% - var(--f)),
-      var(--r) calc(50% - var(--f)/2));
-  background: #CC0000;
-  box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--f)),
+    calc(100% - var(--f)) 100%,
+    calc(100% - var(--f)) calc(100% - var(--f)),
+    0 calc(100% - var(--f)),
+    var(--r) calc(50% - var(--f) / 2)
+  );
+  background: #cc0000;
+  box-shadow: 0 calc(-1 * var(--f)) 0 inset #0005;
   cursor: pointer;
 }
 
-.ribb{
+.ribb {
   padding-top: 10px;
-
 }
-
 
 .box p {
   color: white;
-  
 }
 
 .login-modal-outer {
@@ -271,7 +265,7 @@ textarea {
   position: absolute;
   top: 0;
   right: 0;
-  margin: 5px
+  margin: 5px;
 }
 
 .picture {
@@ -292,12 +286,12 @@ label {
 }
 
 .tag-box {
-  margin: .3em;
+  margin: 0.3em;
   /* background-color: #CC0000; */
   background-color: rgb(200, 200, 200);
   color: rgb(102, 102, 102);
-  padding: .3em;
-  border-radius: .5em;
+  padding: 0.3em;
+  border-radius: 0.5em;
   text-transform: lowercase;
 }
 
@@ -307,13 +301,12 @@ label {
 }
 
 @media (max-width: 760px) {
-
   .add-gift-button {
-    margin-right: .4em;
+    margin-right: 0.4em;
   }
 
   .nav-brand {
-    padding-left: .5em;
+    padding-left: 0.5em;
   }
 
   .right-nav {
@@ -338,13 +331,12 @@ label {
 }
 .ribbon-2.purchased {
   /* style when purchased */
-  background-color: #CC0000;
+  background-color: #cc0000;
 }
 
 .ribbon-2.not-purchased {
   /* style when not purchased */
   background-color: grey;
-
 }
 .ribb.purchased {
   /* style when purchased */
@@ -354,7 +346,59 @@ label {
 .ribb.not-purchased {
   /* style when not purchased */
   color: black;
-  
 }
 
+.user {
+  opacity: 0.4;
+  font-family: "lato", sans-serif;
+  text-align: center;
+}
+.onSale {
+  font-family: "lato", sans-serif;
+}
+.notOnSale {
+  font-family: "lato", sans-serif;
+}
+h4 {
+  padding-top: 10px;
+  font-family: "lato", sans-serif;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+h5 {
+  padding-top: 10px;
+  font-family: "lato", sans-serif;
+  margin: 0;
+}
 
+/* Gradient color1 - color2 - color1 */
+
+hr.style-one {
+  border: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  height: 1px;
+  background: #333;
+  background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+.edit {
+  text-align: center;
+}
+.edit-btn {
+  border: none;
+  border-radius: 10px;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+.edit-btn:hover {
+  background-color:  rgb(200, 200, 200)
+}

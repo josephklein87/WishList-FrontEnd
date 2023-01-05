@@ -16,7 +16,7 @@ const App = () => {
   let [searchResults, setSearchResults] = useState({});
   let [searchParams, setSearchParams] = useState({});
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
-  let [onSale, setOnSale] = useState(gifts.link)
+  let [onSale, setOnSale] = useState(gifts.link);
 
   const getGifts = () => {
     axios
@@ -78,7 +78,7 @@ const App = () => {
     );
   };
 
-  const handleOnSale = (beenPurchased, id) => {
+  const handleOnSale = (id) => {
     setGifts(
       gifts.map((gift) => {
         if (gift.id === id) {
@@ -103,39 +103,55 @@ const App = () => {
         {gifts.map((gift) => {
           return (
             <div className="gift" key={gift.id}>
-              
+              <div>
+                <p className="user">{gift.posted_by}</p>
+              </div>
               <img className="picture" src={gift.gift_picture} />
-              <h4>{gift.gift_name}</h4>
-              <h5>Price: ${gift.gift_price}</h5>
-        
-              
-              <br />
+
               <Tags gift={gift} />
-             <br/>
-             
-<div
+
+              <hr class="style-one"></hr>
+              <h4>{gift.gift_name}</h4>
+
+              <h5>${gift.gift_price}</h5>
+
+              <div
                 className={`sale ${
                   gift.on_sale ? "purchased" : "not-purchased"
                 }`}
                 onClick={() => handleOnSale(gift.on_sale, gift.id)}
               >
                 {gift.on_sale ? (
-                  <p className="onSale"><a href={gift.link} class="alert-link">Item on Sale</a>. Hurry before it's too late</p>
+                  <p className="onSale">
+                    <a href={gift.link} class="alert-link">
+                      Item on Sale
+                    </a>
+                  </p>
                 ) : (
-                  <p className="notOnSale"><a href={gift.link} class="alert-link">Item at Full Price.</a> </p>
+                  <p className="notOnSale">
+                    <a href={gift.link} class="alert-link">
+                      Item at Full Price.
+                    </a>{" "}
+                  </p>
                 )}
               </div>
               <div
-                className={`ribbon-2 ${
-                  gift.been_purchase ? "purchased" : "not-purchased"
+                className={` ${
+                  user.username === gift.posted_by
+                    ? gift.been_purchase
+                      ? "ribbon-2 purchased"
+                      : "ribbon-2 not-purchased"
+                    : null
                 }`}
                 onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}
               >
-                {gift.been_purchase ? (
-                  <p className="ribb purchased">Purchased</p>
-                ) : (
-                  <p className="ribb not-purchased">Not Purchased</p>
-                )}
+                {user.username === gift.posted_by ? (
+                  gift.been_purchase ? (
+                    <p className="ribb purchased">Purchased</p>
+                  ) : (
+                    <p className="ribb not-purchased">Not Purchased</p>
+                  )
+                ) : null}
               </div>
 
               {user.username === gift.posted_by ? (
@@ -148,9 +164,10 @@ const App = () => {
                   X{" "}
                 </button>
               ) : null}
-              <br />
-              <Edit handleUpdate={handleUpdate} gift={gift} user={user} />
-              
+
+              <div className="edit">
+                <Edit handleUpdate={handleUpdate} gift={gift} user={user} />
+              </div>
             </div>
           );
         })}
