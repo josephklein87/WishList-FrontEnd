@@ -49,6 +49,7 @@ const Nav = (props) => {
                 props.setUser(res.data)
                 setCreateUser("")
                 document.getElementById('loginClose').click()
+                props.setPageState("my-gifts")
             }
           //   setAccountCreated(true)
           })
@@ -72,7 +73,14 @@ const Nav = (props) => {
           </div>
                 {(props.user.email) ? 
                   <div className='d-flex right-nav'>
+                    
                     <Add handleCreate={props.handleCreate} user={props.user} />
+                    <button type="btn" class="btn nav-btn" onClick={()=>{props.setPageState("my-gifts")}}>
+                    MY GIFTS
+                  </button>
+                  <button type="btn" class="btn nav-btn all-gifts-button" onClick={()=>{props.setPageState("all-gifts")}} >
+                    ALL GIFTS
+                  </button>
                     <div className='dropdown'>
                         <button className='btn btn-light dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           {props.user.username}
@@ -90,6 +98,7 @@ const Nav = (props) => {
                   <button type="btn" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#signupModal">
                     CREATE ACCOUNT
                   </button>
+  
                 </div>
             }
         </div>
