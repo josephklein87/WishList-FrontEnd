@@ -138,6 +138,20 @@ textarea {
   margin: 10px 10px 10px 0;
 }
 
+.spacer {
+  height: 6em;
+}
+
+.all-gifts-button {
+  margin-right: 16px;
+}
+
+.my-gifts-header {
+  text-align: center;
+  color: #CC0000;
+  font-family: 'Lato', sans-serif;
+}
+
 .add {
   background-color: #d1d5de;
   border: none;
@@ -199,10 +213,18 @@ textarea {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.371);
 }
 
+.searchbar {
+  margin-top: 1em;
+  width: 40%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 380px;
+}
 
 .gifts {
   padding-top: 60px;
-  margin-top: 4em;
+  margin-top: 1em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 25px;

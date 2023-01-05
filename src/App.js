@@ -11,6 +11,7 @@ import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
 import Tags from './components/Tags';
+import SearchBar from './components/SearchBar';
 
 
 
@@ -20,12 +21,20 @@ const App = () => {
   let [searchResults, setSearchResults] = useState({})
   let [searchParams, setSearchParams] =useState({})
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
+  let [pageState, setPageState]= useState("")
 
   const getGifts = () => {
     axios
       .get("http://localhost:8000/api/gifts")
       .then(
-        (response) => setGifts(response.data),
+        (response) => {
+        if (pageState=="my-gifts" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===user.username}) 
+          setGifts(myList)
+        } else {
+          setGifts(response.data)
+        }
+        },
         (err) => console.error(err)
       )
       .catch((error) => console.error(error));
@@ -83,11 +92,16 @@ const App = () => {
 
   useEffect(() => {
     getGifts();
-  }, []);
+  }, [pageState]);
 
   return (
     <>
-        <Nav user={user} setUser={setUser} />
+        <Nav user={user} setUser={setUser} handleCreate={handleCreate} setPageState={setPageState} />
+        <div className='spacer'></div>
+
+        {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY GIFTS</h1> : null}
+        {pageState =="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts}/> : null}
+
         <div className="gifts">
           {gifts.map((gift) => {
             return (
