@@ -20,7 +20,7 @@ const Nav = (props) => {
           username: createUser.username
         }
         axios.post(
-          'http://localhost:8000/api/useraccount',
+          'http://wshlstapi.com/api/useraccount',
           userObj
         ).then((res)=>{
           props.setUser(res.data)
@@ -37,7 +37,7 @@ const Nav = (props) => {
           username: createUser.username
         }
         axios.put(
-            'http://localhost:8000/api/useraccount/login',
+            'http://wshlstapi.com/api/useraccount/login',
             userObj
           ).then((res)=>{
             console.log(res)
