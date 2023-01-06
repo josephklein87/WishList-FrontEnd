@@ -26,7 +26,7 @@ const App = () => {
 
   const getGifts = () => {
     axios
-      .get("http://localhost:8000/api/gifts")
+      .get("https://wshlstapi.herokuapp.com/api/gifts")
       .then(
         (response) => {
         if (pageState=="my-gifts" && user.email) {
@@ -44,7 +44,7 @@ const App = () => {
   const handleCreate = (addGift) => {
     console.log(addGift);
     console.log(user);
-    axios.post("http://localhost:8000/api/gifts", addGift).then((response) => {
+    axios.post("https://wshlstapi.herokuapp.com/api/gifts", addGift).then((response) => {
       console.log(response);
       getGifts();
     });
@@ -52,7 +52,7 @@ const App = () => {
 
   const handleDelete = (event) => {
     axios
-      .delete("http://localhost:8000/api/gifts/" + event.target.value)
+      .delete("https://wshlstapi.herokuapp.com/api/gifts/" + event.target.value)
       .then((response) => {
         getGifts();
       });
@@ -61,7 +61,7 @@ const App = () => {
   const handleUpdate = (editGift) => {
     console.log(editGift);
     axios
-      .put("http://localhost:8000/api/gifts/" + editGift.id, editGift)
+      .put("https://wshlstapi.herokuapp.com/api/gifts/" + editGift.id, editGift)
       .then((response) => {
         getGifts();
       });
@@ -71,7 +71,7 @@ const App = () => {
     let purchaseToggle = { ...gift, been_purchase: !gift.been_purchase };
     console.log(gift.been_purchase);
     axios
-      .put("http://localhost:8000/api/gifts/" + gift.id, purchaseToggle)
+      .put("https://wshlstapi.herokuapp.com/api/gifts/" + gift.id, purchaseToggle)
       .then((response) => {
         getGifts();
       });
