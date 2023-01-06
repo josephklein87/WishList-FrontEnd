@@ -360,6 +360,19 @@ label {
   font-family: Lato;
 }
 
+/* OTHER USER'S PAGE */
+
+.other-user-page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.other-user-page-buttons-container button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 @media (max-width: 760px) {
   .add-gift-button {
     margin-right: 0.4em;
@@ -541,7 +554,14 @@ label {
   opacity: 0.4;
   font-family: "lato", sans-serif;
   text-align: center;
+  transition: opacity 1s;
   /* padding-right: 50px; */
+}
+
+.user:hover{
+  
+  opacity: 1;
+  cursor: pointer;
 }
 
 .onSale {

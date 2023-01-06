@@ -13,7 +13,9 @@ const SearchBar = (props) => {
         axios
           .get("https://wshlstapi.herokuapp.com/api/gifts")
           .then(
-            (response) => setSearchList(response.data),
+            (response) => 
+            {setSearchList(response.data);
+            setSearchOption('gifts')},
             (err) => console.error(err)
           )
           .catch((error) => console.error(error));
@@ -37,6 +39,8 @@ const SearchBar = (props) => {
             props.setGifts(itemSearch)
         } else {
            let userSearch = searchList.filter(gift => {return gift.posted_by.toLowerCase()===searchInputLower}) 
+            props.setOtherUser(searchInputLower)
+            props.setPageState("user-gifts")
             props.setGifts(userSearch)
         }
     }
@@ -47,7 +51,7 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         giftListFull();
-      }, []);
+      }, [props.pageState]);
     
 
     

@@ -12,6 +12,7 @@ import UserSearch from './components/UserSearch';
 import Tags from './components/Tags';
 import Welcome from './components/Welcome'
 import SearchBar from './components/SearchBar';
+import OtherUserPage from "./components/OtherUserPage";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
   let [onSale, setOnSale] = useState(gifts.link);
   let [pageState, setPageState]= useState("")
+  let [otherUser, setOtherUser]= useState("")
 
 
   const getGifts = () => {
@@ -29,8 +31,11 @@ const App = () => {
       .get("https://wshlstapi.herokuapp.com/api/gifts")
       .then(
         (response) => {
-        if (pageState=="my-gifts" && user.email) {
-          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===user.username}) 
+        if (pageState==="my-gifts" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===user.username.toLowerCase()}) 
+          setGifts(myList)
+        } else if (pageState === "user-gifts" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===otherUser.toLowerCase()}) 
           setGifts(myList)
         } else {
           setGifts(response.data)
@@ -105,6 +110,11 @@ const App = () => {
     );
   };
 
+  const findUserGifts = (thisUser) => {
+    setPageState("user-gifts")
+    setOtherUser(thisUser)
+  }
+
   useEffect(() => {
     getGifts();
   }, [pageState]);
@@ -120,15 +130,16 @@ const App = () => {
         <>
         <div className='spacer'></div>
        
-        {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
-        {pageState =="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts}/> : null}
+        {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
+        {pageState ==="user-gifts"&& user.email ? <OtherUserPage otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState}/> : null} 
+        {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
         
       <div className="gifts">
         {gifts.map((gift) => {
           return (
             <div className="gift" key={gift.id}>
               <div>
-                <p className="user">{gift.posted_by}</p>
+                <p className="user" onClick={()=>{findUserGifts(gift.posted_by)}}>{gift.posted_by}</p>
               </div>
               <img className="picture" src={gift.gift_picture} />
 
