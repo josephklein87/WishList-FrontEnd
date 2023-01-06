@@ -117,6 +117,7 @@ const App = () => {
       {user.username === undefined ? 
         <Welcome />
         :
+        <>
         <div className='spacer'></div>
        
         {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
@@ -191,6 +192,8 @@ const App = () => {
         })}
       </div>
     </>
+}
+</>
   );
 };
 
