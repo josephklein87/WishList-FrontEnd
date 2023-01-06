@@ -262,13 +262,11 @@ textarea {
 .delete {
   background-color: #6CB4EE;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   color: black;
   cursor: pointer;
-  font-size: 22px;
-  padding: 10px 20px;
+  font-size: 15px;
   transition: all 0.3s ease;
-  margin-bottom: 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -535,6 +533,7 @@ label {
   opacity: 0.4;
   font-family: "lato", sans-serif;
   text-align: center;
+  padding-right: 50px;
 }
 .onSale {
   font-family: "lato", sans-serif;
