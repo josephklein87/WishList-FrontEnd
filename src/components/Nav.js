@@ -73,19 +73,25 @@ const Nav = (props) => {
           </div>
                 {(props.user.email) ? 
                   <div className='d-flex right-nav'>
-                    
+                    <div className='big-screen'>
                     <Add handleCreate={props.handleCreate} user={props.user} />
                     <button type="btn" class="btn nav-btn" onClick={()=>{props.setPageState("my-gifts")}}>
-                    MY GIFTS
-                  </button>
-                  <button type="btn" class="btn nav-btn all-gifts-button" onClick={()=>{props.setPageState("all-gifts")}} >
-                    ALL GIFTS
-                  </button>
+                      MY GIFTS
+                    </button>
+                    <button type="btn" class="btn nav-btn all-gifts-button" onClick={()=>{props.setPageState("all-gifts")}} >
+                      ALL GIFTS
+                    </button>
+                  </div>
                     <div className='dropdown'>
                         <button className='btn btn-light dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           {props.user.username}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                          <div className='small-screen'>
+                            <Add handleCreate={props.handleCreate} user={props.user} />
+                            <li><a className='dropdown-item' onClick={()=>{props.setPageState("my-gifts")}}>My Gifts</a></li>
+                            <li><a className='dropdown-item' onClick={()=>{props.setPageState("all-gifts")}}>All Gifts</a></li>
+                          </div>
                           <li><a className='dropdown-item' onClick={handleLogOut}>Log Out</a></li>
                         </ul>
                     </div>

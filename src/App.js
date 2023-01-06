@@ -112,7 +112,7 @@ const App = () => {
       <Nav user={user} setUser={setUser} handleCreate={handleCreate} setPageState={setPageState} />
        <div className='spacer'></div>
        
-        {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY GIFTS</h1> : null}
+        {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
         {pageState =="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts}/> : null}
         
       <div className="gifts">
