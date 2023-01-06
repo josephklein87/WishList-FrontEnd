@@ -12,6 +12,7 @@ import UserSearch from './components/UserSearch';
 import Tags from './components/Tags';
 import Welcome from './components/Welcome'
 import SearchBar from './components/SearchBar';
+import OtherUserPage from "./components/OtherUserPage";
 
 
 const App = () => {
@@ -22,15 +23,19 @@ const App = () => {
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
   let [onSale, setOnSale] = useState(gifts.link);
   let [pageState, setPageState]= useState("")
+  let [otherUser, setOtherUser]= useState("")
 
 
   const getGifts = () => {
     axios
-      .get("http://localhost:8000/api/gifts")
+      .get("https://wshlstapi.herokuapp.com/api/gifts")
       .then(
         (response) => {
-        if (pageState=="my-gifts" && user.email) {
-          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===user.username}) 
+        if (pageState==="my-gifts" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===user.username.toLowerCase()}) 
+          setGifts(myList)
+        } else if (pageState === "user-gifts" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===otherUser.toLowerCase()}) 
           setGifts(myList)
         } else {
           setGifts(response.data)
@@ -44,7 +49,7 @@ const App = () => {
   const handleCreate = (addGift) => {
     console.log(addGift);
     console.log(user);
-    axios.post("http://localhost:8000/api/gifts", addGift).then((response) => {
+    axios.post("https://wshlstapi.herokuapp.com/api/gifts", addGift).then((response) => {
       console.log(response);
       getGifts();
     });
@@ -52,7 +57,7 @@ const App = () => {
 
   const handleDelete = (event) => {
     axios
-      .delete("http://localhost:8000/api/gifts/" + event.target.value)
+      .delete("https://wshlstapi.herokuapp.com/api/gifts/" + event.target.value)
       .then((response) => {
         getGifts();
       });
@@ -61,7 +66,7 @@ const App = () => {
   const handleUpdate = (editGift) => {
     console.log(editGift);
     axios
-      .put("http://localhost:8000/api/gifts/" + editGift.id, editGift)
+      .put("https://wshlstapi.herokuapp.com/api/gifts/" + editGift.id, editGift)
       .then((response) => {
         getGifts();
       });
@@ -71,7 +76,7 @@ const App = () => {
     let purchaseToggle = { ...gift, been_purchase: !gift.been_purchase };
     console.log(gift.been_purchase);
     axios
-      .put("http://localhost:8000/api/gifts/" + gift.id, purchaseToggle)
+      .put("https://wshlstapi.herokuapp.com/api/gifts/" + gift.id, purchaseToggle)
       .then((response) => {
         getGifts();
       });
@@ -105,6 +110,11 @@ const App = () => {
     );
   };
 
+  const findUserGifts = (thisUser) => {
+    setPageState("user-gifts")
+    setOtherUser(thisUser)
+  }
+
   useEffect(() => {
     getGifts();
   }, [pageState]);
@@ -120,15 +130,16 @@ const App = () => {
         <>
         <div className='spacer'></div>
        
-        {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
-        {pageState =="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts}/> : null}
+        {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
+        {pageState ==="user-gifts"&& user.email ? <OtherUserPage otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState}/> : null} 
+        {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
         
       <div className="gifts">
         {gifts.map((gift) => {
           return (
             <div className="gift" key={gift.id}>
               <div>
-                <p className="user">{gift.posted_by}</p>
+                <p className="user" onClick={()=>{findUserGifts(gift.posted_by)}}>{gift.posted_by}</p>
               </div>
               <img className="picture" src={gift.gift_picture} />
 
