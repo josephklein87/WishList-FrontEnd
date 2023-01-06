@@ -7,7 +7,7 @@ const Welcome = () => {
         <div className="welcome-box">
             <div className="welcome-icon">
                 <AiFillGift className='gift-icon' size={'20em'} id="state1"/>
-                <AiFillGift className='gift-icon' size={'6em'} id="state2"/>
+                <AiFillGift className='gift-icon' size={'14em'} id="state2"/>
             </div>
             <div className="welcome-container">
                 <h1 className="bigTitle">WSHLST</h1>
