@@ -43,6 +43,7 @@ li {
   justify-content: center;
   padding-left: 1em;
   justify-content: flex-start;
+
 }
 
 .right-nav {
@@ -72,8 +73,20 @@ li {
   color: #666363 !important;
 }
 
+.dropdown-item {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .dropdown-item:hover {
   cursor: pointer;
+}
+
+.small-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container-fluid {
@@ -114,6 +127,8 @@ input[type="checkbox"] {
   padding-top: 10px;
   color: #252525;
 }
+
+
 
 @media (max-width: 200px) {
   .container {
@@ -218,8 +233,13 @@ textarea {
 
 .searchbar {
   display: flex;
-  min-width: 380px;
+  min-width: 100px;
 }
+
+.button-div {
+  display: flex;
+}
+
 
 .select {
   height: 60px;
@@ -352,6 +372,19 @@ label {
   .navbar {
     height: 100px;
   }
+  
+  .spacer {
+    height: 120px;
+  }
+
+  .searchbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 300px !important;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -437,4 +470,15 @@ hr.style-one {
 }
 .edit-btn:hover {
   background-color:  rgb(200, 200, 200)
+}
+
+@media (max-width: 880px) {
+  .small-screen {
+    margin-top: .8em;
+    display: flex;
+  }
+
+  .big-screen {
+    display: none !important;
+  }
 }

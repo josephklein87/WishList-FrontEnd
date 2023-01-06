@@ -60,10 +60,13 @@ const SearchBar = (props) => {
                 <option value='gifts'>Gifts</option>
                 <option value='users'>Users</option>
             </select>
-            <input className='form-control' type="text" placeholder='Search Here' onChange={handleSearch}></input>
-            <input className='btn btn-secondary search-button' type="submit" value="Search" />
+            <input className='form-control search-input' type="text" placeholder='Search Here' onChange={handleSearch}></input>
+            <div className='button-div'>
+                <input className='btn btn-secondary search-button' type="submit" value="Search" />
+                <button type="button" className='btn btn-secondary clear-search-button' onClick={clearSearch}>Clear</button>
+            </div>
         </form>
-        <button className='btn btn-secondary clear-search-button' onClick={clearSearch}>Clear</button>
+        
         </div>
         </>
 
