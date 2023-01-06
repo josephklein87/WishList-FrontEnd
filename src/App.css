@@ -214,9 +214,13 @@ textarea {
   padding: 20px;
   /* background-color: white; */
   background-image: linear-gradient(white, rgb(236, 235, 235));
-  /* text-align: center; */
+  text-align: center;
   position: relative;
   margin-bottom: 30px;
+}
+
+.gift h5 {
+  padding-top: 0;
 }
 
 .gift:hover {
@@ -260,7 +264,7 @@ textarea {
 }
 
 .delete {
-  background-color: #6CB4EE;
+  background-color: none;
   border: none;
   border-radius: 4px;
   color: black;
@@ -334,6 +338,8 @@ label {
 }
 
 .tags-container {
+  position: relative;
+  top: 7.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -410,11 +416,13 @@ label {
 .ribb.purchased {
   /* style when purchased */
   color: white;
+  font-size: 14px;
 }
 
 .ribb.not-purchased {
   /* style when not purchased */
   color: black;
+  font-size: 14px;
 }
 
 /* Welcome Screen */
@@ -533,8 +541,9 @@ label {
   opacity: 0.4;
   font-family: "lato", sans-serif;
   text-align: center;
-  padding-right: 50px;
+  /* padding-right: 50px; */
 }
+
 .onSale {
   font-family: "lato", sans-serif;
 }
@@ -585,7 +594,7 @@ hr.style-one {
   background-color:  rgb(200, 200, 200)
 }
 
-@media (max-width: 880px) {
+@media (max-width: 904px) {
   .small-screen {
     margin-top: .8em;
     display: flex;
