@@ -26,6 +26,7 @@ const Nav = (props) => {
           props.setUser(res.data)
           setCreateUser('')
           document.getElementById('signupClose').click()
+          props.setPageState("my-gifts")
         })
       }
 
