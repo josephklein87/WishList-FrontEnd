@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
     const giftListFull = () => {
         axios
-          .get("http://wshlstapi.com/api/gifts")
+          .get("https://wshlstapi.com/api/gifts")
           .then(
             (response) => setSearchList(response.data),
             (err) => console.error(err)

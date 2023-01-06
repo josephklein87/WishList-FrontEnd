@@ -26,7 +26,7 @@ const App = () => {
 
   const getGifts = () => {
     axios
-      .get("http://wshlstapi.com/api/gifts")
+      .get("https://wshlstapi.com/api/gifts")
       .then(
         (response) => {
         if (pageState=="my-gifts" && user.email) {
@@ -44,7 +44,7 @@ const App = () => {
   const handleCreate = (addGift) => {
     console.log(addGift);
     console.log(user);
-    axios.post("http://wshlstapi.com/api/gifts", addGift).then((response) => {
+    axios.post("https://wshlstapi.com/api/gifts", addGift).then((response) => {
       console.log(response);
       getGifts();
     });
@@ -52,7 +52,7 @@ const App = () => {
 
   const handleDelete = (event) => {
     axios
-      .delete("http://wshlstapi.com/api/gifts/" + event.target.value)
+      .delete("https://wshlstapi.com/api/gifts/" + event.target.value)
       .then((response) => {
         getGifts();
       });
@@ -61,7 +61,7 @@ const App = () => {
   const handleUpdate = (editGift) => {
     console.log(editGift);
     axios
-      .put("http://wshlstapi.com/api/gifts/" + editGift.id, editGift)
+      .put("https://wshlstapi.com/api/gifts/" + editGift.id, editGift)
       .then((response) => {
         getGifts();
       });
@@ -71,7 +71,7 @@ const App = () => {
     let purchaseToggle = { ...gift, been_purchase: !gift.been_purchase };
     console.log(gift.been_purchase);
     axios
-      .put("http://wshlstapi.com/api/gifts/" + gift.id, purchaseToggle)
+      .put("https://wshlstapi.com/api/gifts/" + gift.id, purchaseToggle)
       .then((response) => {
         getGifts();
       });
