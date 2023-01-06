@@ -208,13 +208,26 @@ textarea {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.371);
 }
 
-.searchbar {
+.search-container {
   margin-top: 1em;
-  width: 40%;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.searchbar {
+  display: flex;
   min-width: 380px;
+}
+
+.select {
+  height: 60px;
+}
+
+.clear-search-button {
+  padding-left: 18px !important;
+  padding-right: 18px !important;
 }
 
 .gifts {

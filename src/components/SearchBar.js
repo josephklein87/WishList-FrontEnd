@@ -33,15 +33,16 @@ const SearchBar = (props) => {
         let searchInputLower = search.toLowerCase()
         console.log(searchInputLower);
         if (searchOption === "gifts") {
-            console.log(props.gifts[0].posted_by)
-            console.log(props.gifts)
            let itemSearch = searchList.filter(gift => {return gift.tags.toLowerCase().includes(searchInputLower) || gift.gift_name.toLowerCase().includes(searchInputLower)})
             props.setGifts(itemSearch)
         } else {
            let userSearch = searchList.filter(gift => {return gift.posted_by.toLowerCase()===searchInputLower}) 
-            console.log(userSearch)
             props.setGifts(userSearch)
         }
+    }
+
+    const clearSearch = () =>{
+        props.setGifts(searchList)
     }
 
     useEffect(() => {
@@ -53,6 +54,7 @@ const SearchBar = (props) => {
     return (
 
         <>
+        <div className='search-container'>
         <form onSubmit={searchFilter} className='searchbar'>
             <select name="search-select" className='select-dropdown' onChange={handleOption}>
                 <option value='gifts'>Gifts</option>
@@ -61,6 +63,8 @@ const SearchBar = (props) => {
             <input className='form-control' type="text" placeholder='Search Here' onChange={handleSearch}></input>
             <input className='btn btn-secondary search-button' type="submit" value="Search" />
         </form>
+        <button className='btn btn-secondary clear-search-button' onClick={clearSearch}>Clear</button>
+        </div>
         </>
 
     )
