@@ -10,13 +10,15 @@ import Edit from './components/Edit'
 import Nav from './components/Nav';
 import UserSearch from './components/UserSearch';
 import Tags from './components/Tags';
+import Welcome from './components/Welcome'
 import SearchBar from './components/SearchBar';
+
 
 const App = () => {
   let [gifts, setGifts] = useState([]);
   let [user, setUser] = useState({});
-  let [searchResults, setSearchResults] = useState({});
-  let [searchParams, setSearchParams] = useState({});
+  let [searchResults, setSearchResults] = useState({})
+  let [searchParams, setSearchParams] = useState({})
   let [beenPurchased, setBeenPurchased] = useState(gifts.been_purchase);
   let [onSale, setOnSale] = useState(gifts.link);
   let [pageState, setPageState]= useState("")
@@ -107,10 +109,15 @@ const App = () => {
     getGifts();
   }, [pageState]);
 
+  
   return (
     <>
+
       <Nav user={user} setUser={setUser} handleCreate={handleCreate} setPageState={setPageState} />
-       <div className='spacer'></div>
+      {user.username === undefined ? 
+        <Welcome />
+        :
+        <div className='spacer'></div>
        
         {pageState =="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
         {pageState =="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts}/> : null}
