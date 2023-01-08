@@ -6,8 +6,10 @@ import { AiFillCheckCircle } from 'react-icons/ai'
 const OtherUserPage = (props) => {
     const [otherUserID, setOtherUserID] = useState()
     const [relationshipID, setRelationshipID] = useState()
+    const [otherUserBirthday, setOtherUserBirthday] = useState("")
 
     const addFriend = {user: props.user.id, following: otherUserID}
+
 
     const getOtherUserID = () => {
         axios
@@ -17,6 +19,7 @@ const OtherUserPage = (props) => {
                 for (let i = 0; i < res.data.length; i++) {
                     if (res.data[i].username == props.otherUser) {
                         setOtherUserID(res.data[i].id)
+                        setOtherUserBirthday(res.data[i].birthday)
                     }
                 }
             },
@@ -67,7 +70,8 @@ const OtherUserPage = (props) => {
     return (
         <>
         <div className='other-user-page-header'>
-            <h1 className="my-gifts-header">{props.otherUser.toUpperCase()}'S WISHLIST</h1>
+            <h1 className="my-gifts-header">{props.otherUser}'s Wishlist</h1>
+            <h2 className="other-user-birthday">Birthday: {otherUserBirthday}</h2>
             <div className='other-user-page-buttons-container'>
                 {props.userRelationships.following_list == props.otherUser ?
                 <button className='btn btn-outline-secondary' onClick={deleteFriendship}> FRIENDS <AiFillCheckCircle id='friends-check-icon' size={'1em'}/></button>

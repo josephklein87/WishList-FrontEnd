@@ -687,7 +687,7 @@ hr.style-one {
   background-color: rgb(200, 200, 200)
 }
 
-@media (max-width: 904px) {
+@media (max-width: 1085px) {
   .small-screen {
     margin-top: .8em;
     display: flex;
@@ -702,4 +702,8 @@ hr.style-one {
   .welcome-box {
     margin-top: 50%;
   }
+}
+
+.other-user-birthday {
+  font-size: calc(14px + .5vw) !important
 }
