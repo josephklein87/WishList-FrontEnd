@@ -58,8 +58,11 @@ const OtherUserPage = (props) => {
     useEffect(() => {
         getOtherUserID()
         getRelationshipID()
+    }, [relationshipID, otherUserID]);
+
+    useEffect(() => {
         props.getFollowRelationships()
-      }, [relationshipID, otherUserID, props.userRelationships]);
+    }, [props.userRelationships]);
 
     return (
         <>
