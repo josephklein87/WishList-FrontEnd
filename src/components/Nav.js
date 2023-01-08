@@ -17,7 +17,8 @@ const Nav = (props) => {
         let userObj = {
           email: createUser.email,
           password: createUser.password,
-          username: createUser.username
+          username: createUser.username,
+          birthday: createUser.birthday
         }
         axios.post(
           'https://wshlstapi.herokuapp.com/api/useraccount',
@@ -163,6 +164,10 @@ const Nav = (props) => {
                   <div id="passwordHelpBlock" class="form-text">
                     {error}
                   </div>
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label' htmlFor="birthday">Birthday: </label>
+                  <input className='form-control' type="string" name="birthday" onChange={handleChange}/>
                 </div>
                 <div className='d-flex justify-content-end'>
                   <button className='btn' type="submit">Create</button>

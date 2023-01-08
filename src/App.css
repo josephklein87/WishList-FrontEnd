@@ -377,6 +377,10 @@ label {
   margin-right: 5px;
 }
 
+#friends-check-icon {
+  margin-top: -.2em;
+}
+
 @media (max-width: 760px) {
   .add-gift-button {
     margin-right: 0.4em;
