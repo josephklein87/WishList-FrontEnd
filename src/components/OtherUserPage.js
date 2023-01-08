@@ -31,6 +31,7 @@ const OtherUserPage = (props) => {
     const createFriendship = () => {
         axios.post("https://wshlstapi.herokuapp.com/api/follow", addFriend).then((response) => {
         console.log(response);
+        setRelationshipID(response.data.id)
         });
     }
 
