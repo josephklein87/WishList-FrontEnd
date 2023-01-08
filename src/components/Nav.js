@@ -167,7 +167,7 @@ const Nav = (props) => {
                 </div>
                 <div className='mb-3'>
                   <label className='form-label' htmlFor="birthday">Birthday: </label>
-                  <input className='form-control' type="string" name="birthday" onChange={handleChange}/>
+                  <input className='form-control' type="text" name="birthday" onChange={handleChange}/>
                 </div>
                 <div className='d-flex justify-content-end'>
                   <button className='btn' type="submit">Create</button>
