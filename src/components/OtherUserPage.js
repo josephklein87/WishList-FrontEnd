@@ -67,7 +67,7 @@ const OtherUserPage = (props) => {
             <h1 className="my-gifts-header">{props.otherUser.toUpperCase()}'S WISHLIST</h1>
             <div className='other-user-page-buttons-container'>
                 {props.userRelationships.following_list == props.otherUser ?
-                <button className='btn btn-outline-secondary' onClick={deleteFriendship}> FRIENDS <AiFillCheckCircle size={'1em'}/></button>
+                <button className='btn btn-outline-secondary' onClick={deleteFriendship}> FRIENDS <AiFillCheckCircle id='friends-check-icon' size={'1em'}/></button>
                 :
                 <button className='btn btn-secondary' onClick={createFriendship}>ADD FRIEND</button>
                 }   
