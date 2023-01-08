@@ -79,7 +79,7 @@ const App = () => {
 
   const purchaseChange = (gift) => {
     let purchaseToggle = { ...gift, been_purchase: !gift.been_purchase };
-    console.log(gift.been_purchase);
+    console.log(gift);
     axios
       .put("https://wshlstapi.herokuapp.com/api/gifts/" + gift.id, purchaseToggle)
       .then((response) => {
@@ -87,19 +87,19 @@ const App = () => {
       });
   };
 
-  const handleRibbonClick = (beenPurchased, id) => {
-    setGifts(
-      gifts.map((gift) => {
-        if (gift.id === id) {
-          return {
-            ...gift,
-            been_purchase: !beenPurchased,
-          };
-        }
-        return gift;
-      })
-    );
-  };
+  // const handleRibbonClick = (beenPurchased, id) => {
+  //   setGifts(
+  //     gifts.map((gift) => {
+  //       if (gift.id === id) {
+  //         return {
+  //           ...gift,
+  //           been_purchase: !beenPurchased,
+  //         };
+  //       }
+  //       return gift;
+  //     })
+  //   );
+  // };
 
   const handleOnSale = (id) => {
     setGifts(
@@ -199,7 +199,7 @@ const App = () => {
                         ? "ribbon-2 purchased"
                         : "ribbon-2 not-purchased"
                   }`}
-                  onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}
+                  onClick={() => purchaseChange(gift)}
                 >
                     {gift.been_purchase ? (
                       <p className="ribb purchased">Purchased</p>
