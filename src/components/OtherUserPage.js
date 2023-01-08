@@ -60,13 +60,16 @@ const OtherUserPage = (props) => {
     }
     
     useEffect(() => {
-        getOtherUserID()
         getRelationshipID()
-    }, [relationshipID, otherUserID]);
+    }, [otherUserID]);
+
+    useEffect(() => {
+        getOtherUserID()
+    }, [props.otherUser]);
 
     useEffect(() => {
         props.getFollowRelationships()
-    }, [props.userRelationships]);
+    }, [relationshipID]);
 
     return (
         <>
@@ -74,7 +77,7 @@ const OtherUserPage = (props) => {
             <h1 className="my-gifts-header">{props.otherUser}'s Wishlist</h1>
             <h2 className="other-user-birthday">Birthday: {otherUserBirthday}</h2>
             <div className='other-user-page-buttons-container'>
-                {props.userRelationships.following_list == props.otherUser ?
+                {props.userRelationships.following_list.indexOf(props.otherUser) >= 0 ?
                 <button className='btn btn-outline-secondary' onClick={deleteFriendship}> FRIENDS <AiFillCheckCircle id='friends-check-icon' size={'1em'}/></button>
                 :
                 <button className='btn btn-secondary' onClick={createFriendship}>ADD FRIEND</button>
