@@ -18,7 +18,7 @@ const Nav = (props) => {
           email: createUser.email,
           password: createUser.password,
           username: createUser.username,
-          birthday: createUser.birthday
+          birthday: createUser.birthday.toString()
         }
         axios.post(
           'https://wshlstapi.herokuapp.com/api/useraccount',
@@ -59,6 +59,7 @@ const Nav = (props) => {
 
       const handleChange = (event) => {
         setCreateUser({ ...createUser, [event.target.name]: event.target.value })
+        console.log(createUser)
       }
 
       const handleLogOut = () => {
@@ -167,7 +168,7 @@ const Nav = (props) => {
                 </div>
                 <div className='mb-3'>
                   <label className='form-label' htmlFor="birthday">Birthday: </label>
-                  <input className='form-control' type="string" name="birthday" onChange={handleChange}/>
+                  <input className='form-control' type="date" name="birthday" onChange={handleChange}/>
                 </div>
                 <div className='d-flex justify-content-end'>
                   <button className='btn' type="submit">Create</button>
