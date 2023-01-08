@@ -707,3 +707,8 @@ hr.style-one {
 .other-user-birthday {
   font-size: calc(14px + .5vw) !important
 }
+
+.friends-list-item:hover {
+  cursor: pointer;
+  color: gray;
+}

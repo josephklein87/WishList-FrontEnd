@@ -13,13 +13,13 @@ const Following = (props) => {
                 {props.userRelationships.following_list.map((following) => {
                     
                     return(
-                        <p onClick={() => {props.findUserGifts(following)}}>{following}</p>
+                        <p className="friends-list-item" onClick={() => {props.findUserGifts(following)}}>{following}</p>
                     )
                     })}
             <h4>Followers</h4>
                 {props.userRelationships.follower_list.map((follower) => {
                     return(
-                        <p onClick={() => {props.findUserGifts(follower)}}>{follower}</p>
+                        <p className="friends-list-item" onClick={() => {props.findUserGifts(follower)}}>{follower}</p>
                     )
                 })}
             <div className='other-user-page-buttons-container mt-4'>
