@@ -170,7 +170,7 @@ const App = () => {
                 <Tags gift={gift} />
 
                 <hr class="style-one"></hr>
-                <h4>{gift.gift_name}</h4>
+                <h4 style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{gift.gift_name}</h4>
 
                 <h5>${gift.gift_price}</h5>
 
