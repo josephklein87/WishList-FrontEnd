@@ -703,3 +703,7 @@ hr.style-one {
     margin-top: 50%;
   }
 }
+
+.other-user-birthday {
+  font-size: calc(14px + .5vw) !important
+}
