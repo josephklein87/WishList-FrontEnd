@@ -145,7 +145,7 @@ const App = () => {
         <>
         <div className='spacer'></div>
        
-        {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
+        {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>My Wishlist</h1> : null}
         {pageState ==="user-gifts"&& user.email ? <OtherUserPage user={user} otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null} 
         {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
         {pageState ==="user-friends" && user.email ? <Friends user={user} findUserGifts={findUserGifts} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null}
