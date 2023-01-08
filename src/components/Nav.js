@@ -59,7 +59,6 @@ const Nav = (props) => {
 
       const handleChange = (event) => {
         setCreateUser({ ...createUser, [event.target.name]: event.target.value })
-        console.log(createUser)
       }
 
       const handleLogOut = () => {
@@ -81,8 +80,11 @@ const Nav = (props) => {
                     <button type="btn" class="btn nav-btn" onClick={()=>{props.setPageState("my-gifts")}}>
                       MY GIFTS
                     </button>
-                    <button type="btn" class="btn nav-btn all-gifts-button" onClick={()=>{props.setPageState("all-gifts")}} >
+                    <button type="btn" class="btn nav-btn" onClick={()=>{props.setPageState("all-gifts")}} >
                       ALL GIFTS
+                    </button>
+                    <button type="btn" class="btn nav-btn user-friends-button" onClick={()=>{props.setPageState("user-friends")}}>
+                      FRIENDS
                     </button>
                   </div>
                     <div className='dropdown'>
@@ -94,6 +96,7 @@ const Nav = (props) => {
                             <Add handleCreate={props.handleCreate} user={props.user} />
                             <li><a className='dropdown-item' onClick={()=>{props.setPageState("my-gifts")}}>My Gifts</a></li>
                             <li><a className='dropdown-item' onClick={()=>{props.setPageState("all-gifts")}}>All Gifts</a></li>
+                            <li><a className='dropdown-item' onClick={()=>{props.setPageState("user-friends")}}>Friends</a></li>
                           </div>
                           <li><a className='dropdown-item' onClick={handleLogOut}>Log Out</a></li>
                         </ul>

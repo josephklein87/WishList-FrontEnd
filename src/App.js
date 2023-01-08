@@ -13,6 +13,7 @@ import Tags from './components/Tags';
 import Welcome from './components/Welcome'
 import SearchBar from './components/SearchBar';
 import OtherUserPage from "./components/OtherUserPage";
+import Friends from "./components/Friends"
 
 
 const App = () => {
@@ -147,79 +148,89 @@ const App = () => {
         {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
         {pageState ==="user-gifts"&& user.email ? <OtherUserPage user={user} otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null} 
         {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
-        
-      <div className="gifts">
-        {gifts.map((gift) => {
-          return (
-            <div className="gift" key={gift.id}>
-              <div>
-                <p className="user" onClick={()=>{findUserGifts(gift.posted_by)}}>{gift.posted_by}</p>
-              </div>
-              <img className="picture" src={gift.gift_picture} />
+        {pageState ==="user-friends" && user.email ? <Friends user={user} findUserGifts={findUserGifts} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null}
 
-              <Tags gift={gift} />
+      { pageState !== "user-friends" && user.email ?
+        <>
+        <div className="gifts">
+          {gifts.map((gift) => {
+            return (
+              <div className="gift" key={gift.id}>
+                <div>
+                  <p className="user" onClick={()=>{findUserGifts(gift.posted_by)}}>{gift.posted_by}</p>
+                </div>
+                <img className="picture" src={gift.gift_picture} />
 
-              <hr class="style-one"></hr>
-              <h4>{gift.gift_name}</h4>
+                <Tags gift={gift} />
 
-              <h5>${gift.gift_price}</h5>
+                <hr class="style-one"></hr>
+                <h4>{gift.gift_name}</h4>
 
-              <div
-                className={`sale ${
-                  gift.on_sale ? "purchased" : "not-purchased"
-                }`}
-                onClick={() => handleOnSale(gift.on_sale, gift.id)}
-              >
-                {gift.on_sale ? (
-                  <p className="onSale">
-                    <a href={gift.link} class="alert-link">
-                      Item on Sale
-                    </a>
-                  </p>
-                ) : (
-                  <p className="notOnSale">
-                    <a href={gift.link} class="alert-link">
-                      Item at Full Price.
-                    </a>{" "}
-                  </p>
-                )}
-              </div>
-              <div
-                className={` ${ gift.been_purchase
-                      ? "ribbon-2 purchased"
-                      : "ribbon-2 not-purchased"
-                }`}
-                onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}
-              >
-                  {gift.been_purchase ? (
-                    <p className="ribb purchased">Purchased</p>
-                  ) : (
-                    <p className="ribb not-purchased">Not Purchased</p>
-                  )}
-              </div>
+                <h5>${gift.gift_price}</h5>
 
-              {user.username === gift.posted_by ? (
-                <button
-                  className="delete"
-                  onClick={handleDelete}
-                  value={gift.id}
+                <div
+                  className={`sale ${
+                    gift.on_sale ? "purchased" : "not-purchased"
+                  }`}
+                  onClick={() => handleOnSale(gift.on_sale, gift.id)}
                 >
-                  {" "}
-                  X{" "}
-                </button>
-              ) : null}
+                  {gift.on_sale ? (
+                    <p className="onSale">
+                      <a href={gift.link} class="alert-link">
+                        Item on Sale
+                      </a>
+                    </p>
+                  ) : (
+                    <p className="notOnSale">
+                      <a href={gift.link} class="alert-link">
+                        Item at Full Price.
+                      </a>{" "}
+                    </p>
+                  )}
+                </div>
+                <div
+                  className={` ${ gift.been_purchase
+                        ? "ribbon-2 purchased"
+                        : "ribbon-2 not-purchased"
+                  }`}
+                  onClick={() => handleRibbonClick(gift.been_purchase, gift.id)}
+                >
+                    {gift.been_purchase ? (
+                      <p className="ribb purchased">Purchased</p>
+                    ) : (
+                      <p className="ribb not-purchased">Not Purchased</p>
+                    )}
+                </div>
 
-              <div className="edit">
-                <Edit handleUpdate={handleUpdate} gift={gift} user={user} />
+                {user.username === gift.posted_by ? (
+                  <button
+                    className="delete"
+                    onClick={handleDelete}
+                    value={gift.id}
+                  >
+                    {" "}
+                    X{" "}
+                  </button>
+                ) : null}
+
+                <div className="edit">
+                  <Edit handleUpdate={handleUpdate} gift={gift} user={user} />
+                </div>
               </div>
+                  );
+                })}
             </div>
-          );
-        })}
-      </div>
+            </>
+            
+          :
+          null
+          }
+          </>
+        }
+        
     </>
+  )
+  
 }
-</>
-  );
-};
 
 export default App;
