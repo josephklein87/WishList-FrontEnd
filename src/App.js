@@ -14,6 +14,7 @@ import Welcome from './components/Welcome'
 import SearchBar from './components/SearchBar';
 import OtherUserPage from "./components/OtherUserPage";
 import Friends from "./components/Friends"
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
 const App = () => {
@@ -115,8 +116,12 @@ const App = () => {
   };
 
   const findUserGifts = (thisUser) => {
+    if (thisUser === user.username) {
+      setPageState("my-gifts")
+    } else {
     setPageState("user-gifts")
     setOtherUser(thisUser)
+    }
   }
 
   const getFollowRelationships = () => {
@@ -124,6 +129,7 @@ const App = () => {
         .get(`https://wshlstapi.herokuapp.com/api/followers/${user.id}`)
         .then(
             (res) => {
+                console.log("this is the res" + res.data)
                 setUserRelationships(res.data)
             }
         )
@@ -146,7 +152,7 @@ const App = () => {
         <div className='spacer'></div>
        
         {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>My Wishlist</h1> : null}
-        {pageState ==="user-gifts"&& user.email ? <OtherUserPage user={user} otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null} 
+        {pageState ==="user-gifts" && user.email ? <OtherUserPage user={user} otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships} pageState={pageState}/> : null} 
         {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
         {pageState ==="user-friends" && user.email ? <Friends user={user} findUserGifts={findUserGifts} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null}
 
