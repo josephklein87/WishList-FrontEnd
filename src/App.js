@@ -24,7 +24,7 @@ const App = () => {
   let [onSale, setOnSale] = useState(gifts.link);
   let [pageState, setPageState]= useState("")
   let [otherUser, setOtherUser]= useState("")
-
+  const [userRelationships, setUserRelationships] = useState(user)
 
   const getGifts = () => {
     axios
@@ -115,8 +115,19 @@ const App = () => {
     setOtherUser(thisUser)
   }
 
+  const getFollowRelationships = () => {
+    axios
+        .get(`https://wshlstapi.herokuapp.com/api/followers/${user.id}`)
+        .then(
+            (res) => {
+                setUserRelationships(res.data)
+            }
+        )
+}
+
   useEffect(() => {
     getGifts();
+    getFollowRelationships();
   }, [pageState]);
 
   
@@ -131,7 +142,7 @@ const App = () => {
         <div className='spacer'></div>
        
         {pageState ==="my-gifts" && user.email ? <h1 className='my-gifts-header'>MY WISHLIST</h1> : null}
-        {pageState ==="user-gifts"&& user.email ? <OtherUserPage otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState}/> : null} 
+        {pageState ==="user-gifts"&& user.email ? <OtherUserPage user={user} otherUser={otherUser} setOtherUser={setOtherUser} setPageState={setPageState} getFollowRelationships={getFollowRelationships} userRelationships={userRelationships}/> : null} 
         {pageState ==="all-gifts" ? <SearchBar gifts={gifts} setGifts={setGifts} setOtherUser={setOtherUser} otherUser={otherUser} pageState={pageState} setPageState={setPageState}/> : null}
         
       <div className="gifts">
