@@ -37,6 +37,9 @@ const App = () => {
         } else if (pageState === "user-gifts" && user.email) {
           let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===otherUser.toLowerCase()}) 
           setGifts(myList)
+        } else if (pageState === "user-friends" && user.email) {
+          let myList = response.data.filter(gift => {return gift.posted_by.toLowerCase()===otherUser.toLowerCase()})
+          setGifts(myList)
         } else {
           setGifts(response.data)
         }
